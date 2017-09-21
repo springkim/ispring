@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ISpring", "prj_ISpring\ISpring.vcxproj", "{AAB62598-C42D-402E-891B-A7F7F34BB3B7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "install_ispring", "install_ispring\install_ispring.vcxproj", "{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Debug|x64.ActiveCfg = Debug|x64
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Debug|x64.Build.0 = Debug|x64
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Debug|x86.ActiveCfg = Debug|Win32
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Debug|x86.Build.0 = Debug|Win32
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Release|x64.ActiveCfg = Release|x64
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Release|x64.Build.0 = Release|x64
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Release|x86.ActiveCfg = Release|Win32
+		{AAB62598-C42D-402E-891B-A7F7F34BB3B7}.Release|x86.Build.0 = Release|Win32
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Debug|x64.ActiveCfg = Debug|x64
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Debug|x64.Build.0 = Debug|x64
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Debug|x86.ActiveCfg = Debug|Win32
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Debug|x86.Build.0 = Debug|Win32
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Release|x64.ActiveCfg = Release|x64
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Release|x64.Build.0 = Release|x64
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Release|x86.ActiveCfg = Release|Win32
+		{F0AE3306-4B3B-411A-9CE6-15CE8A0BEE45}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
