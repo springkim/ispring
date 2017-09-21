@@ -23,11 +23,9 @@
 #include<sstream>
 #include"../prj_ISpring/ispring/Compression.h"
 #include"../prj_ISpring/ispring/File.h"
-
+#include"../prj_ISpring/ispring/Console.h"
 #include<WinInet.h>
 #pragma comment(lib, "wininet.lib")
-
-std::string url_gist = "https://gist.github.com/springkim/8429bb12102fc14cdd58cc11ee7bd273";
 
 
 std::string GetHtml(std::string url) {
@@ -59,6 +57,38 @@ std::string GetHtml(std::string url) {
 	}
 	return html;
 }
+std::string GetNewVersion() {
+	std::string url_git = "https://github.com/springkim/ISpring/blob/master/prj_ISpring/ispring/version_info.txt";
+	std::string html = GetHtml(url_git);
+	std::string tag_begin = "&lt;ispring-version&gt;";
+	std::string tag_end = "&lt;/ispring-version&gt;";
+	size_t pos_beg = html.find(tag_begin) + tag_begin.length();
+	size_t pos_end = html.find(tag_end);
+	std::string version = html.substr(pos_beg, pos_end - pos_beg);
+	if (version.length() == 0) {
+		version = "Can't load new version information";
+	}
+	return version;
+}
+std::string GetCurrentVersion() {
+	std::ifstream fin;
+	std::string version = "Not installed";
+	if (ispring::File::DirectoryExist("ispring")) {
+		std::ifstream fin;
+		fin.open("ispring/version_info.txt");
+		if (fin.is_open() == true) {
+			std::string str;
+			str.assign(std::istreambuf_iterator<char>(fin), std::istreambuf_iterator<char>());
+			std::string tag_begin = "<ispring-version>";
+			std::string tag_end = "</ispring-version>";
+			size_t pos_beg = str.find(tag_begin) + tag_begin.length();
+			size_t pos_end = str.find(tag_end);
+			version = str.substr(pos_beg, pos_end - pos_beg);
+		}
+	}
+	return version;
+}
+
 void Fail(std::string str) {
 	std::cerr << str << std::endl;
 	system("pause");
@@ -66,34 +96,36 @@ void Fail(std::string str) {
 }
 
 int main() {
-	std::string html=GetHtml(url_gist);
-	std::string tag_begin = "&lt;ispring-version&gt;";
-	std::string tag_end= "&lt;/ispring-version&gt;";
-	size_t pos_beg = html.find(tag_begin) + tag_begin.length();
-	size_t pos_end = html.find(tag_end);
-	std::string version = html.substr(pos_beg, pos_end-pos_beg);
-	std::cout << version << std::endl;
-	/*char _temp[MAX_PATH];
-	GetTempPathA(MAX_PATH - 1, _temp);
-	std::string temp = _temp;
+	std::string curr_version = GetCurrentVersion();
+	std::string new_version = GetNewVersion();
 
-	std::string file = temp + "ISpring.zip";
-	std::cout << "Downloading ISpring lastest version..." << std::endl;
-	if (PathFileExistsA(file.c_str()) == TRUE) {
-		std::cout << "Remove current version..." << std::endl;
-		DeleteFileA("MSpring.zip");
-	}
-	HRESULT r = URLDownloadToFileA(nullptr, "https://github.com/springkim/MSpring_repo/archive/master.zip", file.c_str(), 0, 0);
-	if (r != S_OK) {
-		Fail("File download fail!!");
-	}
-	std::cout << "installing MSpring..." << std::endl;
-	ispring::Zip::Uncompress(file.c_str());
-	std::string src = file.substr(0, file.find_last_of('.')) + "\\MSpring_repo-master";
+	std::cout << ispring::xout.light_red << "Current version : " << curr_version << std::endl;
+	std::cout << ispring::xout.light_green <<"New version : " << new_version << std::endl;
+	if (curr_version != new_version) {
+		std::cout << ispring::xout.light_white;
+		char _temp[MAX_PATH];
+		GetTempPathA(MAX_PATH - 1, _temp);
+		std::string temp = _temp;
 
-	if (CopyFolder(src, ".\\") == FALSE) {
-		Fail("Move file fail");
+		std::string file = temp + "ISpring.zip";
+		std::cout << "Downloading ISpring lastest version..." << std::endl;
+
+		if (ispring::File::DirectoryExist(file) == true) {
+			DeleteFileA("MSpring.zip");
+		}
+		HRESULT r = URLDownloadToFileA(nullptr, "https://github.com/springkim/ISpring_repo/archive/master.zip", file.c_str(), 0, 0);
+		if (r != S_OK) {
+			Fail("File download fail!!");
+		}
+		std::cout << "installing ISpring..." << std::endl;
+		ispring::Zip::Uncompress(file.c_str());
+		ispring::File::DirectoryCopy(temp + "ISpring/ISpring_repo-master/ispring", "./ispring/");
+		ispring::File::DirectoryErase(temp+"ISpring");
+		ispring::File::FileErase(file);
+		std::cout << "Successfully updated!!" << std::endl;
+	} else {
+		std::cout << "already installed!" << std::endl;
 	}
-	std::cout << "Successfully updated" << std::endl;*/
+	system("pause");
 	return 0;
 }
