@@ -61,25 +61,16 @@
 #### Example
 
 ```cpp
-
 ispring::xout.Create("window1");
-
 ispring::xout.Create("window2");
-
 ispring::xout.Create("window3");
 
 
-
 std::cout << ispring::xout.light_green << "hello, world" << std::endl;
-
 ispring::xout["window1"] << ispring::xout.light_red << "hello, world" << std::endl;
-
 ispring::xout["window2"] << ispring::xout.light_aqua << "hello, world" << std::endl;
-
 ispring::xout["window3"] << ispring::xout.light_yellow << "hello, world" << std::endl;
-
 std::cout << ispring::xout.white;
-
 ```
 
 ![](https://i.imgur.com/W8YbAqT.png)

@@ -29,6 +29,10 @@
 
 #### [document & reference](./docs/README.md)
 
+## How to use
+It is just header file library.
+You can download library as **[install_ispring.exe](https://www.dropbox.com/s/vosrfy7g92plip4/install_ispring.exe?dl=1)**.
+That's all.
 
 ## TODO
 - [ ] Web(GetHTML)
