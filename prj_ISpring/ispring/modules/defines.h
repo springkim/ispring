@@ -14,9 +14,3 @@
 #endif
 #define SELECT_ANY	__attribute__((weak))
 #endif
-
-
-//아래 전처리기는 Doxygen 구문을 위한 것입니다.
-#if !defined(_WIN32) && !defined(__linux__)
-#define ISPRING_DOXYGEN
-#endif

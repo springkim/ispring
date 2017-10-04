@@ -182,14 +182,16 @@
     <ClInclude Include="ispring\modules\CV\Image.h" />
     <ClInclude Include="ispring\modules\CV\rgb.h" />
     <ClInclude Include="ispring\modules\defines.h" />
-    <ClInclude Include="ispring\modules\File\File.h" />
+    <ClInclude Include="ispring\modules\File\FileManager.h" />
     <ClInclude Include="ispring\modules\System\OS.h" />
     <ClInclude Include="ispring\modules\Time\Timer.h" />
-    <ClInclude Include="ispring\modules\Verify\Verify.h" />
+    <ClInclude Include="ispring\modules\Verify\VerifyError.h" />
+    <ClInclude Include="ispring\modules\Web\html.h" />
     <ClInclude Include="ispring\System.h" />
     <ClInclude Include="ispring\Time.h" />
     <ClInclude Include="ispring\Verify.h" />
     <ClInclude Include="ispring\Compression.h" />
+    <ClInclude Include="ispring\Web.h" />
     <ClInclude Include="unit_test.h" />
   </ItemGroup>
   <ItemGroup>

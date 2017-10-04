@@ -46,6 +46,9 @@
     <Filter Include="ispring\modules\Basic">
       <UniqueIdentifier>{ebac36a8-dabd-4275-bd8b-8ddebc9dea77}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ispring\modules\Web">
+      <UniqueIdentifier>{aaf3510c-c4e6-41cb-b13b-fcb3c0d615d1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -66,9 +69,6 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="ispring\System.h">
-      <Filter>ispring</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\Verify.h">
       <Filter>ispring</Filter>
     </ClInclude>
     <ClInclude Include="ispring\Time.h">
@@ -95,17 +95,11 @@
     <ClInclude Include="ispring\modules\CV\Geometry.h">
       <Filter>ispring\modules\CV</Filter>
     </ClInclude>
-    <ClInclude Include="ispring\modules\File\File.h">
-      <Filter>ispring\modules\File</Filter>
-    </ClInclude>
     <ClInclude Include="ispring\modules\System\OS.h">
       <Filter>ispring\modules\System</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\Time\Timer.h">
       <Filter>ispring\modules\Time</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\modules\Verify\Verify.h">
-      <Filter>ispring\modules\Verify</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\Compression\Winzip.h">
       <Filter>ispring\modules\Compression</Filter>
@@ -118,6 +112,21 @@
     </ClInclude>
     <ClInclude Include="ispring\modules\CV\rgb.h">
       <Filter>ispring\modules\CV</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\File\FileManager.h">
+      <Filter>ispring\modules\File</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\Verify.h">
+      <Filter>ispring</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Verify\VerifyError.h">
+      <Filter>ispring\modules\Verify</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Web\html.h">
+      <Filter>ispring\modules\Web</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\Web.h">
+      <Filter>ispring</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

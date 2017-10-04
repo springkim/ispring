@@ -3,17 +3,17 @@
 
 
 int main() {
-	/*UnitTest_Console();
+	UnitTest_Console();
 	UnitTest_System();
 	UnitTest_Time();
 	UnitTest_Compression();
-	UnitTest_File();*/
+	UnitTest_File();
 #ifndef MinGW
 	UnitTest_CV();
 #endif
 	
 
-	//UnitTest_Basic();
+	UnitTest_Basic();
 	
 	return 0;
 }

@@ -1,4 +1,4 @@
-/*
+﻿/*
 *  All
 *  ISpring
 *
@@ -8,15 +8,16 @@
 */
 #if !defined(ISPRING_7E1_05_1E_ALL_H_INCLUDED)
 #define ISPRING_7E1_05_1E_ALL_H_INCLUDED
+#include"Basic.h"
 #include"Compression.h"
 #include "Console.h"
 #include "File.h"
 #include "Time.h"
 #include"Verify.h"
 #include"System.h"
+#include"Web.h"
 
-#include"Basic.h"
-#if defined(_WIN32) && defined(__GNUC__)
+#if defined(_WIN32) && !defined(__GNUC__)
 #include "CV.h"
 #endif
 #endif
@@ -50,21 +51,20 @@
 <br/>OpenCV Ex<br/><br/>
 <img src="https://i.imgur.com/rtqFAMP.png" width="48" align="left">
 <br/>File<br/><br/>
+<img src="https://i.imgur.com/7qKDdyc.png" width="48" align="left">
+<br/>Web<br/><br/>
 <img src="https://i.imgur.com/nQZXBru.png" width="48" align="left">
 <br/>System<br/><br/>
+<img src="https://i.imgur.com/gKkPj3e.png" width="48" align="left">
+<br/>Time<br/><br/>
 <img src="https://i.imgur.com/IPdp7eR.png" width="48" align="left">
 <br/>Verify<br/><br/>
 
-
-<br/><p>&nbsp;</p><br/>
-<br/><p>&nbsp;</p><br/>
-<h2 style="padding:0px;margin:0px">Document& Reference</h2>
-
 <br/><p>&nbsp;</p><br/>
 <h2 style="padding:0px;margin:0px">How to use</h2>
-It is just header file library.<br/>
-You can download library as <strong>[install_ispring.exe](https://www.dropbox.com/s/vosrfy7g92plip4/install_ispring.exe?dl=1)</strong>.<br/>
-That's all.<br/>
+이 라이브러리는 단순 헤더 파일 입니다.<br/>
+<br/>
+<br/>
 
 
 </div>

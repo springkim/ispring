@@ -1,9 +1,6 @@
 #pragma once
-#include"ispring\All.h"
+#include"ispring/All.h"
 
-#ifndef MinGW
-#include"ispring/CV.h"
-#endif
 #define UNITTEST(NAME)	do{ std::cout << "=========="<<#NAME << "==========\n";}while(false)
 void UnitTest_Console() {
 	UNITTEST(Console);

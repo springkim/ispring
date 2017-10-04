@@ -13,56 +13,9 @@
 #if !defined(ISPRING_7E1_9_14_XOUT_HPP_INCLUDED)
 #define ISPRING_7E1_9_14_XOUT_HPP_INCLUDED
 #include"../defines.h"
-#ifdef ISPRING_DOXYGEN
-namespace ispring{
-	/**
-	*	@brief 이 스트림 클래스는 새로 생성한 클래스에 대한 출력 스트림 입니다.
-	*	@details 자세한 내용은 _xout 클래스를 참조 하십시오
-	*	@author kimbomm
-	*	@date 2017-10-03
-	*/
-	class xstream {
-	public:
-		/**
-		*	@brief 새 콘솔에 메세지를 출력합니다.
-		*	@param msg 이 값은 char,int,float,double,std::string이 들어갈 수 있습니다.
-		*	@return xstream&
-		*/
-		xstream& operator<<(TYPE msg) {
-		}
-	};
-	/**
-	*	@brief 이 클래스는 선언 할 수 없으며, 미리 제공된 전역 객체 xout을 사용합니다.
-	*	@author kimbomm
-	*	@date 2017-10-03
-	*/
-	class _xout{
-	public:
-		/**
-		*	@brief 지정된 콘솔에 대한 스트림을 얻어옵니다.
-		*	@param window 생성한 콘솔의 이름
-		*	@return xstream&
-		*	@remark
-		*	@code{.cpp}
-		*	ispring::xout.Create("window1");
-		*	ispring::xout.Create("window2");
-		*	ispring::xout.Create("window3");
-		*
-		*	std::cout << ispring::xout.light_green << "hello, world" << std::endl;
-		*	ispring::xout["window1"] << ispring::xout.light_red << "hello, world" << std::endl;
-		*	ispring::xout["window2"] << ispring::xout.light_aqua << "hello, world" << std::endl;
-		*	ispring::xout["window3"] << ispring::xout.light_yellow << "hello, world" << std::endl;
-		*	std::cout << ispring::xout.white;
-		*	@endcode
-		*/
-		xstream& operator[](std::string window) {
 
-		}
-	}
-}
-#endif
-#define ERROR_MSG(MSG)		do{std::cerr << MSG << std::endl;exit(1);}while(0)
 
+#ifndef DOXYGEN
 //https://stackoverflow.com/questions/10015897/cannot-have-typeofstdendl-as-template-parameter
 template<class e, class t, class a> //string version
 auto get_endl(const std::basic_string<e, t, a>&)
@@ -73,8 +26,10 @@ template<class e, class t> //stream version
 auto get_endl(const std::basic_ostream<e, t>&)-> decltype(&std::endl<e, t>) {
 	return std::endl<e, t>;
 }
-#ifdef _WIN32
+#endif
 
+#ifdef _WIN32
+#ifndef DOXYGEN
 #include<iostream>
 #include<string>
 #include<Windows.h>
@@ -104,7 +59,10 @@ const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/v
 #elif defined(__GNUC__) ///MinGW
 const char* compiler = "g++";
 #endif
+#endif //DOXYGEN
 namespace ispring { 
+#ifndef DOXYGEN
+	class _xout;
 	class _xout_color {
 	public:
 		unsigned char m_c;
@@ -112,8 +70,13 @@ namespace ispring {
 			m_c = c;
 		}
 	};
-
-	
+#endif
+	/**
+	*	@brief 이 스트림 클래스는 새로 생성한 클래스에 대한 출력 스트림 입니다.
+	*	@details 자세한 내용은 _xout 클래스를 참조 하십시오
+	*	@author kimbomm
+	*	@date 2017-10-03
+	*/
 	class xstream {
 	private:
 		std::string m_key_mutex;
@@ -125,7 +88,8 @@ namespace ispring {
 		//[0]= 0:writable , 1:not-reading, 2:exit ('0'~'9','A'~'F') color change
 		//[1]=not-use
 		//[2]=not-use
-	public:
+	private:
+		friend _xout;
 		xstream(std::string key_mutex, std::string key_shmem, DWORD bufsize) {
 			m_size = bufsize + 4;
 			m_key_mutex = key_mutex;
@@ -135,14 +99,14 @@ namespace ispring {
 			if (m_mutex == NULL) {
 				char* msg = NULL;
 				FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, 0, GetLastError(), 0, msg, 0, NULL);
-				ERROR_MSG(msg);
+				ISPRING_VERIFY(msg);
 			}
 			//https://msdn.microsoft.com/ko-kr/library/windows/desktop/aa366537(v=vs.85).aspx
 			m_shmem = ::CreateFileMappingA(INVALID_HANDLE_VALUE, NULL, PAGE_READWRITE, 0, m_size, m_key_shmem.c_str());
 			if (m_shmem == NULL) {
 				char* msg = NULL;
 				FormatMessageA(FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_ALLOCATE_BUFFER, 0, GetLastError(), 0, msg, 0, NULL);
-				ERROR_MSG(msg);
+				ISPRING_VERIFY(msg);
 			}
 			m_buffer = (char*)::MapViewOfFile(m_shmem, FILE_MAP_ALL_ACCESS, 0, 0, m_size);
 		}
@@ -160,18 +124,44 @@ namespace ispring {
 			::CloseHandle(m_shmem);
 			::ReleaseMutex(m_mutex);
 		}
+	public:
+		/**
+		*	@brief 새 콘솔에 메세지를 출력합니다.
+		*	@param msg 이 값은 char,int,float,double,std::string이 들어갈 수 있습니다.
+		*	@return xstream&
+		*/
 		xstream& operator<<(char msg) {
 			return this->operator<<(std::to_string(msg));
 		}
+		/**
+		*	@brief 새 콘솔에 메세지를 출력합니다.
+		*	@param msg 이 값은 char,int,float,double,std::string이 들어갈 수 있습니다.
+		*	@return xstream&
+		*/
 		xstream& operator<<(int msg) {
 			return this->operator<<(std::to_string(msg));
 		}
+		/**
+		*	@brief 새 콘솔에 메세지를 출력합니다.
+		*	@param msg 이 값은 char,int,float,double,std::string이 들어갈 수 있습니다.
+		*	@return xstream&
+		*/
 		xstream& operator<<(float msg) {
 			return this->operator<<(std::to_string(msg));
 		}
+		/**
+		*	@brief 새 콘솔에 메세지를 출력합니다.
+		*	@param msg 이 값은 char,int,float,double,std::string이 들어갈 수 있습니다.
+		*	@return xstream&
+		*/
 		xstream& operator<<(double msg) {
 			return this->operator<<(std::to_string(msg));
 		}
+		/**
+		*	@brief 새 콘솔에 메세지를 출력합니다.
+		*	@param msg 이 값은 char,int,float,double,std::string이 들어갈 수 있습니다.
+		*	@return xstream&
+		*/
 		xstream& operator<<(std::string msg) {
 			const char* begin = msg.c_str();
 			bool write = false;
@@ -190,6 +180,11 @@ namespace ispring {
 			}
 			return *this;
 		}
+		/**
+		*	@brief 새 콘솔에 색상을 설정합니다.
+		*	@param c 색상입니다. 
+		*	@return xstream&
+		*/
 		xstream& operator<<(_xout_color c) {
 			bool write = false;
 			while (write == false) {
@@ -204,9 +199,13 @@ namespace ispring {
 			return *this;
 		}
 	};
-
-	__declspec(selectany) class _xout {
-	public:	//private;
+	/**
+	*	@brief 이 클래스는 선언 할 수 없으며, 미리 제공된 전역 객체 xout을 사용합니다.
+	*	@author kimbomm
+	*	@date 2017-10-03
+	*/
+	SELECT_ANY class _xout {
+	private:
 		std::map<std::string, xstream*> m_xstream;
 		std::string GetKey() {
 			//https://stackoverflow.com/questions/10654258/get-millisecond-part-of-time
@@ -319,9 +318,15 @@ int main(int argc,const char* argv[]) {\n\
 				delete e.second;
 			}
 		}
+		/**
+		*	@brief 새 콘솔을 생성합니다.
+		*	@param window 생성할 콘솔의 이름
+		*	@param bk 생성할 콘솔의 배경색
+		*	@param bufsize IPC 버퍼.
+		*/
 		void Create(std::string window, _xout_color bk = _xout_color(0), DWORD bufsize = 1000) {
 			if (m_xstream.find(window) != m_xstream.end()) {
-				ERROR_MSG(window + " is already exist!");
+				ISPRING_VERIFY(window + " is already exist!");
 			}
 			std::string key_mutex = this->GetKey() + "mutex";
 			std::string key_shmem = this->GetKey() + "shmem";
@@ -337,10 +342,27 @@ int main(int argc,const char* argv[]) {\n\
 			std::string exe_arg = "start \"\" \"" + exe + "\" " + key_mutex + " " + key_shmem + " " + std::to_string(bufsize) + " " + window + " " + std::to_string(bki);
 			system(exe_arg.c_str());
 		}
+		/**
+		*	@brief 지정된 콘솔에 대한 스트림을 얻어옵니다.
+		*	@param window 생성한 콘솔의 이름
+		*	@return xstream&
+		*	@remark
+		*	@code{.cpp}
+		*	ispring::xout.Create("window1");
+		*	ispring::xout.Create("window2");
+		*	ispring::xout.Create("window3");
+		*
+		*	std::cout << ispring::xout.light_green << "hello, world" << std::endl;
+		*	ispring::xout["window1"] << ispring::xout.light_red << "hello, world" << std::endl;
+		*	ispring::xout["window2"] << ispring::xout.light_aqua << "hello, world" << std::endl;
+		*	ispring::xout["window3"] << ispring::xout.light_yellow << "hello, world" << std::endl;
+		*	std::cout << ispring::xout.white;
+		*	@endcode
+		*/
 		xstream& operator[](std::string window) {
 			auto it = m_xstream.find(window);
 			if (it == m_xstream.end()) {
-				ERROR_MSG(window + " is not created");
+				ISPRING_VERIFY(window + " is not created");
 			}
 			return *it->second;
 		}
@@ -364,6 +386,7 @@ int main(int argc,const char* argv[]) {\n\
 	}xout;
 
 }
+#ifndef DOXYGEN
 inline ispring::xstream& operator<<(ispring::xstream& __xout, decltype(std::endl<char, std::char_traits<char>>) endl) {
 	__xout << "\n";
 	return __xout;
@@ -382,6 +405,7 @@ inline std::ostream& operator<<(std::ostream& __cout, ispring::_xout_color c) {
 	}
 	return __cout;
 }
+#endif //DOXYGEN
 
 #endif //_WIN32
 #ifdef __linux__
@@ -424,23 +448,23 @@ namespace ispring {
 			m_shmem = shmget(m_key_shmem, m_size, IPC_CREAT | 0666);
 			//http://man7.org/linux/man-pages/man2/shmget.2.html
 			if (m_shmem < 0) {
-				ERROR_MSG(strerror(errno));
+				ISPRING_VERIFY(strerror(errno));
 			}
 			void* p = shmat(m_shmem, nullptr, 0);
 			if (p == (void*)-1) {
-				ERROR_MSG(strerror(errno));
+				ISPRING_VERIFY(strerror(errno));
 			}
 			m_mutex = (pthread_mutex_t*)p;
 			m_mutex_attr = (pthread_mutexattr_t*)((char*)p + sizeof(pthread_mutex_t));
 			m_buffer = (char*)p + sizeof(pthread_mutex_t) + sizeof(pthread_mutexattr_t);
 			if (pthread_mutexattr_init(m_mutex_attr) != 0) {
-				ERROR_MSG("pthread_mutexattr_init fail");
+				ISPRING_VERIFY("pthread_mutexattr_init fail");
 			}
 			if (pthread_mutexattr_setpshared(m_mutex_attr, PTHREAD_PROCESS_SHARED) != 0) {
-				ERROR_MSG("pthread_mutexattr_setshared fail");
+				ISPRING_VERIFY("pthread_mutexattr_setshared fail");
 			}
 			if (pthread_mutex_init(m_mutex, m_mutex_attr) != 0) {
-				ERROR_MSG("pthread_mutex_init fail");
+				ISPRING_VERIFY("pthread_mutex_init fail");
 			}
 		}
 		~xstream() {
@@ -538,7 +562,7 @@ namespace ispring {
 		void Create(std::string window, _xout_color color = _xout_color(0), size_t bufsize = 1000) {
 			//https://askubuntu.com/questions/484993/run-command-on-anothernew-terminal-window
 			if (m_xstream.find(window) != m_xstream.end()) {
-				ERROR_MSG(window + " is already exist!");
+				ISPRING_VERIFY(window + " is already exist!");
 			}
 			key_t key_shmem = this->GetKey();
 			m_xstream.insert(std::make_pair(window, new xstream(key_shmem, bufsize)));
@@ -550,7 +574,7 @@ namespace ispring {
 		xstream& operator[](std::string window) {
 			auto it = m_xstream.find(window);
 			if (it == m_xstream.end()) {
-				ERROR_MSG(window + " is not created");
+				ISPRING_VERIFY(window + " is not created");
 			}
 			return *it->second;
 		}

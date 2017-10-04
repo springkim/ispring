@@ -15,11 +15,13 @@
 #include"../defines.h"
 #include"rgb.h"
 #include<opencv2/opencv.hpp>
+#ifndef DOXYGEN
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
+#endif
 #include<Windows.h>
-#include"../Verify/Verify.h"
+#include"../Verify/VerifyError.h"
 namespace ispring {
 	/**
 	*	@brief 이 정적 클래스는 이미지 처리 함수를 포함합니다.
@@ -32,6 +34,7 @@ namespace ispring {
 		*	@brief 이진 이미지를 세선화 합니다.
 		*	@param image 입력 이미지
 		*	@warning 입력 이미지는 반드시 이진 이미지여야 합니다.
+		*	@return 세선화된 이미지
 		*	@remark
 		*		<img src="https://i.imgur.com/qCUoy5U.jpg" width="640">
 		*/
@@ -124,6 +127,7 @@ namespace ispring {
 		*	@brief 이진 이미지에서 다중 연결점을 제거 합니다.
 		*	@param image 입력 이미지
 		*	@warning 입력 이미지는 반드시 이진 이미지여야 합니다.
+		*	@return 연결 픽셀이 제거된 이미지
 		*	@remark
 		*		<img src="https://i.imgur.com/cOP19G0.png" width="640">
 		*/
@@ -155,7 +159,9 @@ namespace ispring {
 		/**
 		*	@brief 연결점이 제거된 이진 이미지에서 픽셀 체인을 찾습니다.
 		*	@param image 입력 이미지
-		*	@warning 입력 이미지는 반드시 이진 이미지여야 합니다. 연결점이 제거 되지 않아도 동작은 하지만 이후에 동작은 보장하지 않습니다.
+		*	@warning 입력 이미지는 반드시 연결점이 제거된 이진 이미지여야 합니다.\n
+		*	연결점이 제거 되지 않아도 동작은 하지만 이후에 동작은 보장하지 않습니다.
+		*	@return 픽셀 체인
 		*	@remark
 		*		<img src="https://i.imgur.com/L4iIMZa.png" width="640">
 		*/
@@ -212,6 +218,7 @@ namespace ispring {
 		*	색은 907가지가 있습니다. 밝은 색들만 존재합니다.\n
 		*	색을 구분할때 더이상 랜덤색상을 사용하지 마십시오.
 		*	@param index 색상 인덱스
+		*	@return RGB색상
 		*	@remark
 		*		<img src="https://i.imgur.com/s0jntOf.png" width="640">
 		*/
@@ -223,6 +230,7 @@ namespace ispring {
 		*	@details 이 함수는 일반적인 이미지에서 적절한 문턱치 값으로 cv::Canny 를 수행합니다.
 		*	@param image 입력 이미지
 		*	@warning 현재 이진 이미지에서는 제대로 동작하지 않습니다.
+		*	@return 윤곽 이미지
 		*	@remark
 		*		<img src="https://i.imgur.com/M0LxN7q.jpg" width="640" >
 		*/
@@ -297,6 +305,7 @@ namespace ispring {
 		*	@brief 이미지를 확대하거나 축소 합니다.
 		*	@param image 입력 이미지
 		*	@param ratio 확대 또는 축소할 비율. 이 값이 1.0F 미만이면 작게 축소되며, 1.0F 이상이면 크게 확대됨.
+		*	@return 확대 또는 축소된 이미지
 		*	@remark
 		*		<img src="https://i.imgur.com/CZVTaZh.jpg" width="1280" >
 		*/
@@ -328,6 +337,7 @@ namespace ispring {
 		*	@param image 입력 이미지
 		*	@param degree 회전할 각도 CW(시계방향)
 		*	@param out 회전 중심점을 반환함.
+		*	@return 회전된 이미지
 		*	@remark
 		*		<img src="https://i.imgur.com/5uHt0Eb.jpg" width="640" >
 		*/
@@ -350,6 +360,7 @@ namespace ispring {
 		*	@param image 입력 이미지
 		*	@param degree 회전할 각도 CW(시계방향)
 		*	@param base 기본 회전 중심점. 기본 매개변수를 사용하면 이미지의 중점으로 회전 합니다.
+		*	@return 회전된 이미지
 		*	@remark
 		*		<img src="https://i.imgur.com/evXPXAt.jpg" width="640" >
 		*/
@@ -369,6 +380,7 @@ namespace ispring {
 		*	@param w 가로크기
 		*	@param h 세로크기
 		*	@param pad_color 패딩이 생길경우 채울 Gray 색상
+		*	@return 피팅된 이미지
 		*	@remark
 		*		<img src="https://i.imgur.com/wNt5dVY.jpg" width="640" >
 		*/
@@ -394,12 +406,13 @@ namespace ispring {
 		}
 		/**
 		*	@brief 이미지들을 하나의 이미지로 합칩니다.
-		*	@details 이미지가 2장이면 가로,세로 비율을 보고 위아래로 붙일지 좌우로 붙일지 결정합니다.
-		*			그 이외의 경우는 NxN 매트릭스에 순서대로 이미지를 쌓습니다. 모자란 이미지는 지정한 Pad 색으로 칠해 집니다.
-		*			매트릭스의 기본 크기는 첫번째 이미지의 크기를 따릅니다.
+		*	@details 이미지가 2장이면 가로,세로 비율을 보고 위아래로 붙일지 좌우로 붙일지 결정합니다.\n
+		*			그 이외의 경우는 NxN 매트릭스에 순서대로 이미지를 쌓습니다. 모자란 이미지는 지정한 Pad 색으로 칠해 집니다.\n
+		*			매트릭스의 기본 크기는 첫번째 이미지의 크기를 따릅니다.\n
 		*			자세한 내용은 예제 이미지를 참조하십시오
 		*	@param imgs 입력 이미지들
 		*	@param pad_color 패딩이 생길경우 채울 Gray 색상
+		*	@return 합쳐진 이미지
 		*	@remark
 		*		<p>&nbsp;</p><img src="https://i.imgur.com/gYZL4Hc.jpg" width="640" >
 		*		<p>&nbsp;</p><img src="https://i.imgur.com/wBqAbWh.jpg" width="640" >

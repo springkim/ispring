@@ -11,11 +11,14 @@
 *			Created by kimbom on 2017. 10. 04...
 *			Copyright 2017 kimbom.All rights reserved.
 */
+
 #if !defined(ISPRING_7E1_A_4_RGB_HPP_INCLUDED)
 #define ISPRING_7E1_A_4_RGB_HPP_INCLUDED
+
 #include<vector>
 #include<opencv2/opencv.hpp>
 #include"../defines.h"
+#ifndef DOXYGEN
 namespace ispring_3rdparty {
 	SELECT_ANY std::vector<cv::Scalar> color_map = {
 		{ 126,30,156 },		//purple
@@ -928,4 +931,5 @@ namespace ispring_3rdparty {
 	};
 
 }
+#endif //DOXYGEN
 #endif  //ISPRING_7E1_A_4_RGB_HPP_INCLUDED

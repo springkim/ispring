@@ -1,10 +1,12 @@
 var searchData=
 [
-  ['defines_2eh',['defines.h',['../defines_8h.html',1,'']]],
-  ['directorycopy',['DirectoryCopy',['../classispring_1_1_file.html#ae7fc7d0dbb20420d6b7a88c12e390887',1,'ispring::File']]],
-  ['directoryerase',['DirectoryErase',['../classispring_1_1_file.html#a54c70d01f21032e71d862cc41ee910a0',1,'ispring::File']]],
-  ['directoryexist',['DirectoryExist',['../classispring_1_1_file.html#a4dd3644656b9aa55658b2ecaa019c50a',1,'ispring::File']]],
-  ['directorymake',['DirectoryMake',['../classispring_1_1_file.html#a8e82dab710a36ae028c8ff208018e643',1,'ispring::File']]],
-  ['displayimage',['DisplayImage',['../classispring_1_1_c_v.html#a915f990db506c19269a9c035fa54d9fe',1,'ispring::CV']]],
-  ['displayimage2',['DisplayImage2',['../classispring_1_1_c_v.html#a127b6c8ef692d6441ff580169268be77',1,'ispring::CV']]]
+  ['file',['File',['../classispring_1_1_file.html',1,'ispring']]],
+  ['file_2eh',['File.h',['../_file_8h.html',1,'']]],
+  ['filecopy',['FileCopy',['../classispring_1_1_file.html#a5234d6b9619ce2fbf3e9814ff0240275',1,'ispring::File']]],
+  ['fileerase',['FileErase',['../classispring_1_1_file.html#a90e58dcca92501cf804d4de7e6616412',1,'ispring::File']]],
+  ['fileexist',['FileExist',['../classispring_1_1_file.html#ab54dbb11c6f017c800e86e360c28e77b',1,'ispring::File']]],
+  ['filelist',['FileList',['../classispring_1_1_file.html#a29b02a502c8a7b16386c892156b46944',1,'ispring::File']]],
+  ['filemanager_2eh',['FileManager.h',['../_file_manager_8h.html',1,'']]],
+  ['findlinebyleastsquaremethod',['FindLineByLeastSquareMethod',['../classispring_1_1_c_v_geometry.html#a471ad03c6698428cf211101181d9a41d',1,'ispring::CVGeometry']]],
+  ['fitimage',['FitImage',['../classispring_1_1_c_v.html#a7792d1e159db410821e10b127d79d5ad',1,'ispring::CV']]]
 ];

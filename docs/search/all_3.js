@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['color_5fmap',['color_map',['../namespaceispring__3rdparty.html#a58284af581d802ff06230c0bf3092e31',1,'ispring_3rdparty']]],
-  ['compress',['Compress',['../classispring_1_1_zip.html#a6e33893f693b9354743fa053e8110dbc',1,'ispring::Zip::Compress(std::string folder, std::string _password=&quot;&quot;, std::atomic&lt; int &gt; *progress=nullptr)'],['../classispring_1_1_zip.html#a1e7b0ab9ed8d97bbb9bc491044459438',1,'ispring::Zip::Compress(std::string zip_name, std::vector&lt; std::string &gt; files, std::string _password=&quot;&quot;, std::atomic&lt; int &gt; *progress=nullptr)']]],
-  ['compression_2eh',['Compression.h',['../_compression_8h.html',1,'']]],
-  ['console_2eh',['Console.h',['../_console_8h.html',1,'']]],
-  ['cv',['CV',['../classispring_1_1_c_v.html',1,'ispring']]],
-  ['cv_2eh',['CV.h',['../_c_v_8h.html',1,'']]],
-  ['cvgeometry',['CVGeometry',['../classispring_1_1_c_v_geometry.html',1,'ispring']]]
+  ['defines_2eh',['defines.h',['../defines_8h.html',1,'']]],
+  ['directorycopy',['DirectoryCopy',['../classispring_1_1_file.html#ae7fc7d0dbb20420d6b7a88c12e390887',1,'ispring::File']]],
+  ['directoryerase',['DirectoryErase',['../classispring_1_1_file.html#a54c70d01f21032e71d862cc41ee910a0',1,'ispring::File']]],
+  ['directoryexist',['DirectoryExist',['../classispring_1_1_file.html#a4dd3644656b9aa55658b2ecaa019c50a',1,'ispring::File']]],
+  ['directorymake',['DirectoryMake',['../classispring_1_1_file.html#a8e82dab710a36ae028c8ff208018e643',1,'ispring::File']]],
+  ['displayimage',['DisplayImage',['../classispring_1_1_c_v.html#a915f990db506c19269a9c035fa54d9fe',1,'ispring::CV']]],
+  ['displayimage2',['DisplayImage2',['../classispring_1_1_c_v.html#a127b6c8ef692d6441ff580169268be77',1,'ispring::CV']]]
 ];

@@ -1,13 +1,18 @@
-/*
-*  Timer.h
-*  ispring
+﻿/**
+* @file		Timer.h
+* @author		kimbomm (springnode@gmail.com)
+* @date		2017. 05. 23...
+* @version	1.0.0
 *
-*  Created by Kimbom on 2017. 05. 23...
-*  Copyright 2017 kimbom. All rights reserved.
-*
+*  @brief
+*			시간 측정 라이브러리
+*	@remark
+*			Created by kimbom on 2017. 05. 23...
+*			Copyright 2017 kimbom.All rights reserved.
 */
 #if !defined(ISPRING_7E1_05_18_TIME_H_INCLUDED)
 #define ISPRING_7E1_05_18_TIME_H_INCLUDED
+#include"../defines.h"
 #include<iostream>
 #include<vector>
 #include<string>
@@ -21,15 +26,19 @@
 #include<typeinfo>
 #include<cmath>
 #pragma warning(disable:4290)
+#include"../Verify/VerifyError.h"
 
-#include"../Verify/Verify.h"
-#define INTERVALTIME_ERROR_MSG(MSG)	ISPRING_VERIFY(MSG)
 
 namespace ispring {
-	///support types = char, int ,double ,std::string
+#ifndef DOXYGEN
 	using _TimerType = std::chrono::system_clock::time_point;
 	using _TimerCount = long long;
-	
+#endif
+	/**
+	*	@brief 이 정적 클래스는 시간을 측정하는데 사용됩니다.
+	*	@author kimbomm
+	*	@date 2017-05-23
+	*/
 	class Timer {
 		class TimerElement {
 		public:
@@ -42,6 +51,7 @@ namespace ispring {
 			double avg;
 			double accu;
 		};
+#ifndef DOXYGEN
 		class GenericType {
 			friend class Timer;
 		private:
@@ -90,10 +100,11 @@ namespace ispring {
 			}
 
 		};
+#endif
 	private:
 		Timer() = delete;
 		~Timer() = delete;
-	protected:
+	private:
 		static std::vector<GenericType> mapped;
 		static std::vector<std::pair<double, _TimerCount>> accumulated;
 		static std::vector<_TimerType> temp;
@@ -113,6 +124,11 @@ namespace ispring {
 			}
 		}
 	public:
+		/**
+		*	@brief 시간 측정을 시작합니다.
+		*	@param param 시간 측정 구분자(이 값은 char,int,float,double,string)을 지원합니다.
+		*	@warning 같은 구분자를 Tock이 불려지기전에 사용할 수 없습니다.
+		*/
 		template<typename T>
 		static void Tick(T param) {
 			using GENERIC_TYPE = typename std::enable_if<
@@ -129,7 +145,7 @@ namespace ispring {
 
 			intptr_t stkidx = Timer::GetPosInContainer(Timer::stk, pts);
 			if (stkidx != -1) {	//exist
-				INTERVALTIME_ERROR_MSG("Startclock and endclock is not matched");
+				ISPRING_VERIFY("Startclock and endclock is not matched");
 			}
 			stk.push_back(pts);
 
@@ -143,6 +159,22 @@ namespace ispring {
 				accumulated.push_back(std::make_pair(0.0, 0));
 			}
 		}
+		/**
+		*	@brief 시간 측정을 죵료합니다.
+		*	@param param 시간 측정 구분자(이 값은 char,int,float,double,string)을 지원합니다.
+		*	@return TimerElement구조체를 반환합니다. 이 구조체는 curr,avg,accu 를 가지고 있으며 현재 구간 시간, 평균 구간 시간, 누적 구간 시간 입니다.
+		*	@warning 이 함수는 반드시 Tick이 불려진다음 호출되야 합니다. 
+		*	@remark
+		*	@code{.cpp}
+		*	ispring::Timer::Tick("for");
+		*	for (int i = 0; i < 5; i++) {
+		*	ispring::Timer::Tick(1234);
+		*	Sleep(100);
+		*	std::cout << "elem : " << ispring::Timer::Tock(1234).accu << std::endl;
+		*	}
+		*	std::cout << "for : " << ispring::Timer::Tock("for").curr << std::endl;
+		*	@endcode
+		*/
 		template<typename T>
 		static Timer::TimerElement Tock(T param) {
 			using GENERIC_TYPE = typename std::enable_if<
@@ -158,7 +190,7 @@ namespace ispring {
 			pts.SetObject(param);
 			intptr_t stkidx = Timer::GetPosInContainer(Timer::stk, pts);
 			if (stkidx == -1) {	//exist
-				INTERVALTIME_ERROR_MSG("There is no Tick of this object");
+				ISPRING_VERIFY("There is no Tick of this object");
 			}
 			intptr_t depth = stkidx;
 			Timer::stk.erase(Timer::stk.begin() + stkidx);
@@ -172,21 +204,14 @@ namespace ispring {
 				tm.accu = accumulated[idx].first;
 				tm.avg = tm.accu / accumulated[idx].second;
 			} else {
-				INTERVALTIME_ERROR_MSG("No matched begin entry point");
+				ISPRING_VERIFY("No matched begin entry point");
 			}
 			return tm;
 		}
 	};
-#ifdef _WIN32
-	__declspec(selectany) std::vector<Timer::GenericType> Timer::mapped;
-	__declspec(selectany) std::vector<_TimerType> Timer::temp;
-	__declspec(selectany) std::deque<Timer::GenericType> Timer::stk;
-	__declspec(selectany) std::vector<std::pair<double, _TimerCount>> Timer::accumulated;
-#elif defined(__linux__)
-	__attribute__((weak) std::vector<Timer::GenericType> Timer::mapped;
-	__attribute__((weak) std::vector<_TimerType> Timer::temp;
-	__attribute__((weak) std::deque<Timer::GenericType> Timer::stk;
-	__attribute__((weak) std::vector<std::pair<double, _TimerCount>> Timer::accumulated;
-#endif
+	SELECT_ANY std::vector<Timer::GenericType> Timer::mapped;
+	SELECT_ANY std::vector<_TimerType> Timer::temp;
+	SELECT_ANY std::deque<Timer::GenericType> Timer::stk;
+	SELECT_ANY std::vector<std::pair<double, _TimerCount>> Timer::accumulated;
 }
 #endif

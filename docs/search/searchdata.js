@@ -1,14 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefgimnoprstuvwxz",
-  1: "_cfstxz",
+  0: "abcdfghioprstuvwxz",
+  1: "cfhostz",
   2: "i",
-  3: "abcdfgiorstvwxz",
-  4: "_acdfgioptuz",
-  5: "acmst",
-  6: "_",
-  7: "ein",
-  8: "i"
+  3: "abcdfghiorstvwxz",
+  4: "acdfgiptuz",
+  5: "i",
+  6: "i"
 };
 
 var indexSectionNames =
@@ -18,10 +16,8 @@ var indexSectionNames =
   2: "namespaces",
   3: "files",
   4: "functions",
-  5: "variables",
-  6: "typedefs",
-  7: "defines",
-  8: "pages"
+  5: "defines",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -31,9 +27,7 @@ var indexSectionLabels =
   2: "네임스페이스들",
   3: "파일들",
   4: "함수",
-  5: "변수",
-  6: "타입정의",
-  7: "매크로",
-  8: "페이지들"
+  5: "매크로",
+  6: "페이지들"
 };
 

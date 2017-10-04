@@ -1,5 +1,6 @@
 ﻿#if !defined(ISPRING_7E1_9_15_ZIP_HPP_INCLUDED)
 #define ISPRING_7E1_9_15_ZIP_HPP_INCLUDED
+#ifndef DOXYGEN
 #if defined(_WIN32) && defined(__GNUC__)
 #if defined(_UNICODE)
 #define _tcsncpy_s(a,b,c,d)	wcsncpy(a,c,d)
@@ -13,8 +14,8 @@
 #define strcat_s(a,b)		strcat(a,b)
 #endif
 #ifdef _WIN32
-#include"../File/File.h"
-#include"../Verify/Verify.h" 
+#include"../File/FileManager.h"
+#include"../Verify/VerifyError.h" 
 #ifndef NOMINMAX
 #define NOMINMAX
 #endif
@@ -7125,4 +7126,5 @@ namespace ispring_3rdparty {
 	}
 }
 #endif //_WIN32
+#endif //DOXYGEN
 #endif

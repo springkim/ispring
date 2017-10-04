@@ -8,5 +8,5 @@
 */
 #if !defined(ISPRING_7E1_9_15_FILE_HPP_INCLUDED)
 #define ISPRING_7E1_9_15_FILE_HPP_INCLUDED
-#include"modules/File/File.h"
+#include"modules/File/FileManager.h"
 #endif  //ISPRING_7E1_9_15_FILE_HPP_INCLUDED

@@ -15,6 +15,7 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<sstream>
 namespace ispring {
 	/**
 	*	@brief 이 정적 클래스는 문자열을 조작하는 함수를 포함합니다.
