@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['html',['HTML',['../classispring_1_1_h_t_m_l.html',1,'ispring']]],
-  ['html_2eh',['html.h',['../html_8h.html',1,'']]]
+  ['hbitmap2cvmat',['HBITMAP2cvMat',['../classispring_1_1_c_v.html#ae195a5b18b33df18190defe7eb674c3c',1,'ispring::CV']]]
 ];

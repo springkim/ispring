@@ -22,6 +22,7 @@
 #endif
 #include<Windows.h>
 #include"../Verify/VerifyError.h"
+#include"../System/OS.h"
 namespace ispring {
 	/**
 	*	@brief 이 정적 클래스는 이미지 처리 함수를 포함합니다.
@@ -468,7 +469,37 @@ namespace ispring {
 			}
 			return glue;
 		}
+#if defined(ISPRING_WINDOWS) || defined(DOXYGEN)
+		/**
+		*	@brief HBITMAP을 cv::Mat 으로 변환 합니다.
+		*	@details 이 함수는 Windows 전용 입니다.
+		*	@param hbmp HBITMAP 이미지
+		*	@return cv::Mat
+		*/
+		cv::Mat HBITMAP2cvMat(HBITMAP hbmp) {
+			static HWND hwnd = nullptr;
+			if (hwnd == nullptr) {
+				hwnd = ispring::OS::GetHWND();
+			}
+			cv::Mat img;
+			HDC hdc = GetDC(hwnd);
+			BITMAPINFO bmi;
+			BITMAPINFOHEADER* bmih = &(bmi.bmiHeader);
+			ZeroMemory(bmih, sizeof(BITMAPINFOHEADER));
+			bmih->biSize = sizeof(BITMAPINFOHEADER);
+			if (GetDIBits(hdc, hbmp, 0, 0, NULL, &bmi, DIB_RGB_COLORS)) {
+				int height = (bmih->biHeight > 0) ? bmih->biHeight : -bmih->biHeight;
+				img = cv::Mat(height, bmih->biWidth, CV_8UC3);
 
+				bmih->biBitCount = 24;
+				bmih->biCompression = BI_RGB;
+				GetDIBits(hdc, hbmp, 0, height, img.data, &bmi, DIB_RGB_COLORS);
+			}
+			ReleaseDC(NULL, hdc);
+			cv::flip(img, img, 0);
+			return img;
+		}
+#endif
 	};
 }
 #endif

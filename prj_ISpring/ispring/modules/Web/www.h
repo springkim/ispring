@@ -1,5 +1,5 @@
 ﻿/**
-* @file		html.h
+* @file		www.h
 * @author		kimbomm (springnode@gmail.com)
 * @date		2017. 10. 05...
 * @version	1.0.0
@@ -22,11 +22,12 @@
 #pragma comment(lib, "wininet.lib")
 namespace ispring {
 	/**
-	*	@brief 이 정적 클래스는 HTML 조작하는 함수를 포함합니다.
+	*	@brief 이 정적 클래스는 웹을 다루는 함수를 포함합니다.
 	*	@author kimbomm
 	*	@date 2017-10-05
 	*/
-	class HTML {
+	class Web {
+	public:
 		/**
 		*	@brief url의 html을 가져 옵니다.
 		*	@param url URL
@@ -60,6 +61,16 @@ namespace ispring {
 				}
 			}
 			return html;
+		}
+		/**
+		*	@brief url의 파일을 다운로드 합니다.
+		*	@param url URL
+		*	@param file 저장할 파일 명
+		*	@return 다운로드에 성공하면 true
+		*/
+		static bool Download(std::string url,std::string file) {
+			HRESULT r = URLDownloadToFileA(nullptr, url.c_str(), file.c_str(), 0, 0);
+			return r == S_OK;
 		}
 	};
 }

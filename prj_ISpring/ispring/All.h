@@ -16,9 +16,10 @@
 #include"Verify.h"
 #include"System.h"
 #include"Web.h"
-
-#if defined(_WIN32) && !defined(__GNUC__)
+#ifndef NO_OPENCV
+#if ISPRING_VISUAL_STUDIO
 #include "CV.h"
+#endif
 #endif
 #endif
 
@@ -63,7 +64,9 @@
 <br/><p>&nbsp;</p><br/>
 <h2 style="padding:0px;margin:0px">How to use</h2>
 이 라이브러리는 단순 헤더 파일 입니다.<br/>
-<br/>
+[install_ispring.exe](https://www.dropbox.com/s/hcu291ubxtj1n5y/install_ispring.exe?dl=1)
+위 파일을 다운받고 실행하면 ispring이 해당 폴더에 설치됩니다.<br/>
+라이브러리의 버전이 변경되도 다시 install_ispring.exe 를 실행하면 라이브러리를 업그레이드 해줍니다.
 <br/>
 
 

@@ -186,7 +186,7 @@
     <ClInclude Include="ispring\modules\System\OS.h" />
     <ClInclude Include="ispring\modules\Time\Timer.h" />
     <ClInclude Include="ispring\modules\Verify\VerifyError.h" />
-    <ClInclude Include="ispring\modules\Web\html.h" />
+    <ClInclude Include="ispring\modules\Web\www.h" />
     <ClInclude Include="ispring\System.h" />
     <ClInclude Include="ispring\Time.h" />
     <ClInclude Include="ispring\Verify.h" />

@@ -122,11 +122,11 @@
     <ClInclude Include="ispring\modules\Verify\VerifyError.h">
       <Filter>ispring\modules\Verify</Filter>
     </ClInclude>
-    <ClInclude Include="ispring\modules\Web\html.h">
-      <Filter>ispring\modules\Web</Filter>
-    </ClInclude>
     <ClInclude Include="ispring\Web.h">
       <Filter>ispring</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Web\www.h">
+      <Filter>ispring\modules\Web</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -77,6 +77,32 @@ namespace ispring {
 			}
 			return bIsWow64 != TRUE;
 		}
+		/**
+		*	@brief 현재 프로세스의 HWND 값을 가져 옵니다.
+		*	@return 성공할 경우 0 이 아닌 값
+		*/
+		static HWND GetHWND() {
+			DWORD pid = GetCurrentProcessId();
+			if (pid == 0 || pid == -1)return NULL;
+			LPARAM tmp = 0;
+			tmp = (LPARAM)pid;
+			EnumWindows([](HWND hwnd, LPARAM lparam)->BOOL {
+				HANDLE hTarget = NULL;
+				DWORD dwID = 0;
+				DWORD dwSrcID = (DWORD)(*(DWORD*)lparam);
+				GetWindowThreadProcessId(hwnd, &dwID);
+				if (dwID == dwSrcID) {
+					*((int*)lparam) = *(DWORD*)hwnd;
+					*(((int*)lparam) + 1) = 1;
+					return FALSE;
+				}
+				return TRUE;
+			}, (LPARAM)&tmp);
+			if (((int)(tmp >> 32))) {
+				return (HWND)tmp;
+			}
+			return GetConsoleWindow();
+		}
 	};
 }
 #elif
