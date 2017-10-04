@@ -24,7 +24,7 @@ namespace ispring {
 		*	@param std::string str : source string
 		*	@param std::string token : token
 		*	@return Divided words
-		*	@warnings Remove 0-length string automatically
+		*	@warning Remove 0-length string automatically
 		*	@details ( ";*.cpp;*.h;*.c;*.jpg;;;;;") -> ([*.cpp],[*.h],[*.c],[*.jpg])
 		*/
 		static std::vector<std::string> Tokenizer(std::string str, std::string token) {
