@@ -175,10 +175,13 @@
     <ClInclude Include="ispring\CV.h" />
     <ClInclude Include="ISpring\File.h" />
     <ClInclude Include="ispring\modules\Basic\String.h" />
+    <ClInclude Include="ispring\modules\Compression\Winzip.h" />
     <ClInclude Include="ispring\modules\Compression\Zip.h" />
     <ClInclude Include="ispring\modules\Console\xout.h" />
     <ClInclude Include="ispring\modules\CV\Geometry.h" />
     <ClInclude Include="ispring\modules\CV\Image.h" />
+    <ClInclude Include="ispring\modules\CV\rgb.h" />
+    <ClInclude Include="ispring\modules\defines.h" />
     <ClInclude Include="ispring\modules\File\File.h" />
     <ClInclude Include="ispring\modules\System\OS.h" />
     <ClInclude Include="ispring\modules\Time\Timer.h" />

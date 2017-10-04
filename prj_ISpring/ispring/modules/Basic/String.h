@@ -2,8 +2,10 @@
 * @file		String.h
 * @author		kimbomm (springnode@gmail.com)
 * @date		2017. 10. 3...
+* @version	1.0.0	
 *
-*  @brief 문자열 처리 라이브러리
+*  @brief
+*			문자열 처리 라이브러리
 *	@remark
 *			Created by kimbom on 2017. 10. 3...
 *			Copyright 2017 kimbom.All rights reserved.
@@ -15,16 +17,16 @@
 #include<string>
 namespace ispring {
 	/**
-	*	@breif String : 이 정적 클래스는 문자열을 조작하는 함수를 포함합니다.
+	*	@brief 이 정적 클래스는 문자열을 조작하는 함수를 포함합니다.
 	*	@author kimbomm
 	*	@date 2017-10-03
 	*/
 	class String {
 	public:
 		/**
-		*	@breif 문자열을 토큰을 기준으로 분리합니다.
-		*	@param std::string str : 입력 문자열
-		*	@param std::string token : 토큰
+		*	@brief 문자열을 토큰을 기준으로 분리합니다.
+		*	@param str 입력 문자열
+		*	@param token  토큰
 		*	@return 잘려진 문자열들이 std::vector에 담겨서 반환됩니다.
 		*	@warning 길이가 0인 문자열은 추가되지 않습니다.
 		*	@details 예시 입력 :  ";*.cpp;*.h;*.c;*.jpg;;;;;" \n
@@ -43,8 +45,8 @@ namespace ispring {
 			return ret;
 		}
 		/**
-		*	@breif 파일을 포함한 경로에서 확장자를 추출 합니다.
-		*	@param std::string path : 파일 경로
+		*	@brief 파일을 포함한 경로에서 확장자를 추출 합니다.
+		*	@param path 파일 경로
 		*	@return 확장자( . 은 포함되지 않음)
 		*	@warning 확장자가 없으면 빈 문자열이 반환 됩니다.
 		*/
@@ -57,8 +59,8 @@ namespace ispring {
 			return ext;
 		}
 		/**
-		*	@breif 파일의 이름을 경로에서 추출합니다.(확장자 포함)
-		*	@param std::string path : 파일 경로
+		*	@brief 파일의 이름을 경로에서 추출합니다.(확장자 포함)
+		*	@param path 파일 경로
 		*	@return 파일의 이름.
 		*/
 		static std::string GetNameOfFile(std::string path) {
@@ -70,8 +72,8 @@ namespace ispring {
 			return name;
 		}
 		/**
-		*	@breif 파일을 포함한 경로에서 순수 파일의 이름을 반환 합니다(확장자 제외)
-		*	@param std::string path : 파일 경로
+		*	@brief 파일을 포함한 경로에서 순수 파일의 이름을 반환 합니다(확장자 제외)
+		*	@param path 파일 경로
 		*	@return 순수 파일 이름(확장자 제외)
 		*/
 		static std::string GetPureNameOfFile(std::string path) {
@@ -87,9 +89,9 @@ namespace ispring {
 			return pure;
 		}
 		/**
-		*	@breif 숫자를 0 패딩을 주어 반환 합니다.
-		*	@param unsigned int num : 변환할 숫자
-		*	@param unsigned int pad : 지정할 자릿수
+		*	@brief 숫자를 0 패딩을 주어 반환 합니다.
+		*	@param num 변환할 숫자
+		*	@param pad 지정할 자릿수
 		*	@return 패딩이 지정된 숫자에 대한 문자열
 		*	@details 12를 4의 패딩을 주면 "0012" 라는 문자열이 반환됩니다.
 		*/

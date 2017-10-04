@@ -19,28 +19,31 @@
     <Filter Include="ispring">
       <UniqueIdentifier>{ac65138c-2c17-449c-9603-ec1e2af9efb3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ispring\Console">
-      <UniqueIdentifier>{486eeef9-e473-4109-97e9-33c3b2d4a662}</UniqueIdentifier>
+    <Filter Include="ispring\modules">
+      <UniqueIdentifier>{b8fe7875-3286-4f20-8a51-991333aceb75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ispring\Time">
-      <UniqueIdentifier>{52abada9-348c-4d47-87f8-4abebb36d0e7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ispring\Verify">
-      <UniqueIdentifier>{f0a29157-f182-4e61-8fd5-74247c18257f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ispring\System">
+    <Filter Include="ispring\modules\System">
       <UniqueIdentifier>{f0c81ad8-c96b-4fea-9d55-efd84c1c8084}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ispring\Compression">
-      <UniqueIdentifier>{e0154945-2606-483a-9eeb-e84035574bbb}</UniqueIdentifier>
+    <Filter Include="ispring\modules\Time">
+      <UniqueIdentifier>{52abada9-348c-4d47-87f8-4abebb36d0e7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ispring\File">
+    <Filter Include="ispring\modules\Verify">
+      <UniqueIdentifier>{f0a29157-f182-4e61-8fd5-74247c18257f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ispring\modules\File">
       <UniqueIdentifier>{fe5a190f-a8cc-4930-be14-28d68f376142}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ispring\CV">
+    <Filter Include="ispring\modules\CV">
       <UniqueIdentifier>{74cea3d8-2c6f-4a4c-b025-c239ed71923c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ispring\Basic">
+    <Filter Include="ispring\modules\Console">
+      <UniqueIdentifier>{486eeef9-e473-4109-97e9-33c3b2d4a662}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ispring\modules\Compression">
+      <UniqueIdentifier>{e0154945-2606-483a-9eeb-e84035574bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ispring\modules\Basic">
       <UniqueIdentifier>{ebac36a8-dabd-4275-bd8b-8ddebc9dea77}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -81,31 +84,40 @@
       <Filter>ispring</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\Basic\String.h">
-      <Filter>ispring\Basic</Filter>
+      <Filter>ispring\modules\Basic</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\Compression\Zip.h">
-      <Filter>ispring\Compression</Filter>
+      <Filter>ispring\modules\Compression</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\Console\xout.h">
-      <Filter>ispring\Console</Filter>
+      <Filter>ispring\modules\Console</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\CV\Geometry.h">
-      <Filter>ispring\CV</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\modules\CV\Image.h">
-      <Filter>ispring\CV</Filter>
+      <Filter>ispring\modules\CV</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\File\File.h">
-      <Filter>ispring\File</Filter>
+      <Filter>ispring\modules\File</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\System\OS.h">
-      <Filter>ispring\System</Filter>
+      <Filter>ispring\modules\System</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\Time\Timer.h">
-      <Filter>ispring\Time</Filter>
+      <Filter>ispring\modules\Time</Filter>
     </ClInclude>
     <ClInclude Include="ispring\modules\Verify\Verify.h">
-      <Filter>ispring\Verify</Filter>
+      <Filter>ispring\modules\Verify</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Compression\Winzip.h">
+      <Filter>ispring\modules\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\defines.h">
+      <Filter>ispring\modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\CV\Image.h">
+      <Filter>ispring\modules\CV</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\CV\rgb.h">
+      <Filter>ispring\modules\CV</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

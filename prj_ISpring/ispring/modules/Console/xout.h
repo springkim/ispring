@@ -1,14 +1,66 @@
-﻿/*
-*  xout.h
-*  ispring
+﻿/**
+* @file		xout.h
+* @author		kimbomm (springnode@gmail.com)
+* @date		2017. 10. 3...
+* @version	1.0.0
 *
-*  Created by kimbom on 2017. 9. 20...
-*  Copyright 2017 kimbom. All rights reserved.
-*
+*  @brief
+*			다중 콘솔 출력 라이브러리
+*	@remark
+*			Created by kimbom on 2017. 9. 20...
+*			Copyright 2017 kimbom.All rights reserved.
 */
 #if !defined(ISPRING_7E1_9_14_XOUT_HPP_INCLUDED)
 #define ISPRING_7E1_9_14_XOUT_HPP_INCLUDED
+#include"../defines.h"
+#ifdef ISPRING_DOXYGEN
+namespace ispring{
+	/**
+	*	@brief 이 스트림 클래스는 새로 생성한 클래스에 대한 출력 스트림 입니다.
+	*	@details 자세한 내용은 _xout 클래스를 참조 하십시오
+	*	@author kimbomm
+	*	@date 2017-10-03
+	*/
+	class xstream {
+	public:
+		/**
+		*	@brief 새 콘솔에 메세지를 출력합니다.
+		*	@param msg 이 값은 char,int,float,double,std::string이 들어갈 수 있습니다.
+		*	@return xstream&
+		*/
+		xstream& operator<<(TYPE msg) {
+		}
+	};
+	/**
+	*	@brief 이 클래스는 선언 할 수 없으며, 미리 제공된 전역 객체 xout을 사용합니다.
+	*	@author kimbomm
+	*	@date 2017-10-03
+	*/
+	class _xout{
+	public:
+		/**
+		*	@brief 지정된 콘솔에 대한 스트림을 얻어옵니다.
+		*	@param window 생성한 콘솔의 이름
+		*	@return xstream&
+		*	@remark
+		*	@code{.cpp}
+		*	ispring::xout.Create("window1");
+		*	ispring::xout.Create("window2");
+		*	ispring::xout.Create("window3");
+		*
+		*	std::cout << ispring::xout.light_green << "hello, world" << std::endl;
+		*	ispring::xout["window1"] << ispring::xout.light_red << "hello, world" << std::endl;
+		*	ispring::xout["window2"] << ispring::xout.light_aqua << "hello, world" << std::endl;
+		*	ispring::xout["window3"] << ispring::xout.light_yellow << "hello, world" << std::endl;
+		*	std::cout << ispring::xout.white;
+		*	@endcode
+		*/
+		xstream& operator[](std::string window) {
 
+		}
+	}
+}
+#endif
 #define ERROR_MSG(MSG)		do{std::cerr << MSG << std::endl;exit(1);}while(0)
 
 //https://stackoverflow.com/questions/10015897/cannot-have-typeofstdendl-as-template-parameter
@@ -52,7 +104,7 @@ const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/v
 #elif defined(__GNUC__) ///MinGW
 const char* compiler = "g++";
 #endif
-namespace ispring {
+namespace ispring { 
 	class _xout_color {
 	public:
 		unsigned char m_c;
@@ -60,6 +112,8 @@ namespace ispring {
 			m_c = c;
 		}
 	};
+
+	
 	class xstream {
 	private:
 		std::string m_key_mutex;
@@ -308,6 +362,7 @@ int main(int argc,const char* argv[]) {\n\
 		_xout_color light_yellow = _xout_color('E');
 		_xout_color light_white = _xout_color('F');
 	}xout;
+
 }
 inline ispring::xstream& operator<<(ispring::xstream& __xout, decltype(std::endl<char, std::char_traits<char>>) endl) {
 	__xout << "\n";

@@ -63,7 +63,7 @@
 <br/><p>&nbsp;</p><br/>
 <h2 style="padding:0px;margin:0px">How to use</h2>
 It is just header file library.<br/>
-You can download library as <strong>[install_ispring.exe](https://www.dropbox.com/s/vosrfy7g92plip4/install_ispring.exe?dl=1)</strong>.</br>
+You can download library as <strong>[install_ispring.exe](https://www.dropbox.com/s/vosrfy7g92plip4/install_ispring.exe?dl=1)</strong>.<br/>
 That's all.<br/>
 
 

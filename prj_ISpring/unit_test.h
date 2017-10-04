@@ -114,31 +114,46 @@ void UnitTest_CV() {
 	UNITTEST(CV);
 	{
 		cv::Mat img = cv::imread("../../img/test0001.png", 0);
-		cv::Mat thinn = ispring::Image::Thinning(img);
-		cv::Mat glue = ispring::Image::GlueImage_LR(img, thinn);
+		cv::Mat thinn = ispring::CV::Thinning(img);
+		cv::Mat glue = ispring::CV::GlueImage({ img, thinn });
 		cv::imwrite("thinning.jpg", glue);
+		cv::Mat disct = ispring::CV::PixelDisconnect(thinn);
+		cv::imwrite("disconnected.png", disct);
+		std::vector<std::vector<cv::Point>> chain = ispring::CV::PixelChain(disct);
+		cv::Mat out;
+		cv::cvtColor(disct, out, CV_GRAY2BGR);
+		int i = 0;
+		for (auto&F1:chain) {
+			cv::Vec3b color;
+			color[0] = ispring::CV::GetRGB(i)[0];
+			color[1] = ispring::CV::GetRGB(i)[1];
+			color[2] = ispring::CV::GetRGB(i)[2];
+			for (auto& F2 : F1) {
+				out.at<cv::Vec3b>(F2.y, F2.x) = color;
+			}
+			i++;
+		}
+		cv::imwrite("pixel-chain.png", out);
 	}
 	{
 		cv::Mat img = cv::imread("../../img/test0002.jpg");
-		cv::Mat edge = ispring::Image::AutoCanny(img);
-		cv::Mat glue = ispring::Image::GlueImage_LR(img, edge);
+		cv::Mat edge = ispring::CV::AutoCanny(img);
+		cv::Mat glue = ispring::CV::GlueImage({ img, edge });
 		cv::imwrite("edge.jpg", glue);
 	}
 	{
 		cv::Mat img = cv::imread("../../img/test0002.jpg");
-		//ispring::Image::DisplayImage(img);
-		//ispring::Image::DisplayImage2(img);
-		cv::Mat z1=ispring::Image::Zoom(img, 0.5);
-		cv::Mat z2 = ispring::Image::Zoom(img, 0.7);
-		cv::Mat z3 = ispring::Image::Zoom(img, 1.2);
-		cv::Mat z4 = ispring::Image::Zoom(img, 1.5);
-		cv::Mat last=ispring::Image::GlueImage_LR(ispring::Image::GlueImage_LR(ispring::Image::GlueImage_LR(z1, z2), img), ispring::Image::GlueImage_LR(z3, z4));
-		cv::imwrite("zoom.jpg", last);
+		cv::Mat z1=ispring::CV::Zoom(img, 0.5);
+		cv::Mat z2 = ispring::CV::Zoom(img, 0.7);
+		cv::Mat z3 = ispring::CV::Zoom(img, 1.2);
+		cv::Mat z4 = ispring::CV::Zoom(img, 1.5);
+		cv::Mat glue =ispring::CV::GlueImage({ z1,z2,z3,z4,z1 });
+		cv::imwrite("zoom.jpg", glue);
 	}
 	{
 		cv::Mat img = cv::imread("../../img/test0002.jpg");
-		cv::imwrite("rotate1.jpg", ispring::Image::ImageRotateOuter(img, 45));
-		cv::imwrite("rotate2.jpg", ispring::Image::ImageRotateInner(img, 45));
+		cv::imwrite("rotate1.jpg", ispring::CV::ImageRotateOuter(img, 45));
+		cv::imwrite("rotate2.jpg", ispring::CV::ImageRotateInner(img, 45));
 	}
 }
 #endif
