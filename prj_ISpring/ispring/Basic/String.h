@@ -1,10 +1,11 @@
 ﻿/**
-* @file String.h
-* @author kimbomm
-* @date 2017. 10. 3...
+* @file		String.h
+* @author		kimbomm
+* @date		2017. 10. 3...
 *
-*  @brief Created by kimbom on 2017. 10. 3...\n
-*  Copyright 2017 kimbom. All rights reserved.\n
+*  @brief 
+*		Created by kimbom on 2017. 10. 3...\n
+*		Copyright 2017 kimbom. All rights reserved.\n
 */
 #if !defined(ISPRING_7E1_A_3_STRING_HPP_INCLUDED)
 #define ISPRING_7E1_A_3_STRING_HPP_INCLUDED
