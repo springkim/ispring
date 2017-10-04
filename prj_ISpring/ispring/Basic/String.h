@@ -40,6 +40,12 @@ namespace ispring {
 			}
 			return ret;
 		}
+		/**
+		*	@breif 파일을 포함한 경로에서 확장자를 추출 합니다.
+		*	@param std::string path : 파일 경로
+		*	@return 확장자( . 은 포함되지 않음)
+		*	@warning 확장자가 없으면 빈 문자열이 반환 됩니다.
+		*/
 		static std::string GetExtOfFile(std::string path) {
 			std::string::size_type dot = path.find_last_of('.');
 			if (dot == std::string::npos) {
@@ -48,6 +54,11 @@ namespace ispring {
 			std::string ext = path.substr(dot+1, path.length() - dot-1);
 			return ext;
 		}
+		/**
+		*	@breif 파일의 이름을 경로에서 추출합니다.(확장자 포함)
+		*	@param std::string path : 파일 경로
+		*	@return 파일의 이름.
+		*/
 		static std::string GetNameOfFile(std::string path) {
 			std::string::size_type slash = path.find_last_of("/\\");
 			if (slash == std::string::npos) {
@@ -56,6 +67,11 @@ namespace ispring {
 			std::string name = path.substr(slash + 1, path.length() - slash - 1);
 			return name;
 		}
+		/**
+		*	@breif 파일을 포함한 경로에서 순수 파일의 이름을 반환 합니다(확장자 제외)
+		*	@param std::string path : 파일 경로
+		*	@return 순수 파일 이름(확장자 제외)
+		*/
 		static std::string GetPureNameOfFile(std::string path) {
 			std::string::size_type slash = path.find_last_of("/\\");
 			if (slash == std::string::npos) {
@@ -68,6 +84,13 @@ namespace ispring {
 			std::string pure = path.substr(slash+1, dot - slash-1);
 			return pure;
 		}
+		/**
+		*	@breif 숫자를 0 패딩을 주어 반환 합니다.
+		*	@param unsigned int num : 변환할 숫자
+		*	@param unsigned int pad : 지정할 자릿수
+		*	@return 패딩이 지정된 숫자에 대한 문자열
+		*	@details 12를 4의 패딩을 주면 "0012" 라는 문자열이 반환됩니다.
+		*/
 		static std::string PadNum(unsigned int num,unsigned int pad) {
 			std::ostringstream oss;
 			oss.width(pad);
