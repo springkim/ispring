@@ -171,21 +171,21 @@
   <ItemGroup>
     <ClInclude Include="ISpring\All.h" />
     <ClInclude Include="ispring\Basic.h" />
-    <ClInclude Include="ispring\Basic\String.h" />
-    <ClInclude Include="ispring\Compression\Zip.h" />
     <ClInclude Include="ispring\Console.h" />
-    <ClInclude Include="ISpring\Console\xout.h" />
     <ClInclude Include="ispring\CV.h" />
-    <ClInclude Include="ispring\CV\Geometry.h" />
-    <ClInclude Include="ispring\CV\Image.h" />
     <ClInclude Include="ISpring\File.h" />
-    <ClInclude Include="ispring\File\File.h" />
+    <ClInclude Include="ispring\modules\Basic\String.h" />
+    <ClInclude Include="ispring\modules\Compression\Zip.h" />
+    <ClInclude Include="ispring\modules\Console\xout.h" />
+    <ClInclude Include="ispring\modules\CV\Geometry.h" />
+    <ClInclude Include="ispring\modules\CV\Image.h" />
+    <ClInclude Include="ispring\modules\File\File.h" />
+    <ClInclude Include="ispring\modules\System\OS.h" />
+    <ClInclude Include="ispring\modules\Time\Timer.h" />
+    <ClInclude Include="ispring\modules\Verify\Verify.h" />
     <ClInclude Include="ispring\System.h" />
-    <ClInclude Include="ispring\System\OS.h" />
     <ClInclude Include="ispring\Time.h" />
-    <ClInclude Include="ISpring\Time\Timer.h" />
     <ClInclude Include="ispring\Verify.h" />
-    <ClInclude Include="ispring\Verify\Verify.h" />
     <ClInclude Include="ispring\Compression.h" />
     <ClInclude Include="unit_test.h" />
   </ItemGroup>

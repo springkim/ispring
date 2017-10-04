@@ -8,5 +8,5 @@
 */
 #if !defined(ISPRING_7E1_9_15_CV_HPP_INCLUDED)
 #define ISPRING_7E1_9_15_CV_HPP_INCLUDED
-#include"CV/Image.h"
+#include"modules/CV/Image.h"
 #endif  //ISPRING_7E1_9_15_CV_HPP_INCLUDED

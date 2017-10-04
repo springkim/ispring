@@ -56,17 +56,8 @@
     <ClInclude Include="ISpring\File.h">
       <Filter>ispring</Filter>
     </ClInclude>
-    <ClInclude Include="ISpring\Console\xout.h">
-      <Filter>ispring\Console</Filter>
-    </ClInclude>
     <ClInclude Include="ispring\Console.h">
       <Filter>ispring</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\Verify\Verify.h">
-      <Filter>ispring\Verify</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\System\OS.h">
-      <Filter>ispring\System</Filter>
     </ClInclude>
     <ClInclude Include="unit_test.h">
       <Filter>헤더 파일</Filter>
@@ -80,32 +71,41 @@
     <ClInclude Include="ispring\Time.h">
       <Filter>ispring</Filter>
     </ClInclude>
-    <ClInclude Include="ISpring\Time\Timer.h">
-      <Filter>ispring\Time</Filter>
-    </ClInclude>
     <ClInclude Include="ispring\Compression.h">
       <Filter>ispring</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\Compression\Zip.h">
-      <Filter>ispring\Compression</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\File\File.h">
-      <Filter>ispring\File</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\CV\Geometry.h">
-      <Filter>ispring\CV</Filter>
-    </ClInclude>
-    <ClInclude Include="ispring\CV\Image.h">
-      <Filter>ispring\CV</Filter>
     </ClInclude>
     <ClInclude Include="ispring\CV.h">
       <Filter>ispring</Filter>
     </ClInclude>
-    <ClInclude Include="ispring\Basic\String.h">
-      <Filter>ispring\Basic</Filter>
-    </ClInclude>
     <ClInclude Include="ispring\Basic.h">
       <Filter>ispring</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Basic\String.h">
+      <Filter>ispring\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Compression\Zip.h">
+      <Filter>ispring\Compression</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Console\xout.h">
+      <Filter>ispring\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\CV\Geometry.h">
+      <Filter>ispring\CV</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\CV\Image.h">
+      <Filter>ispring\CV</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\File\File.h">
+      <Filter>ispring\File</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\System\OS.h">
+      <Filter>ispring\System</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Time\Timer.h">
+      <Filter>ispring\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\modules\Verify\Verify.h">
+      <Filter>ispring\Verify</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

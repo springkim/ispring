@@ -11,5 +11,5 @@
 #include<iostream>
 #include<vector>
 #include<string>
-#include"Basic\String.h"
+#include"modules/Basic/String.h"
 #endif  //ISPRING_7E1_A_3_BASIC_HPP_INCLUDED
