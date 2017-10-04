@@ -3,8 +3,8 @@
 * @author kimbomm
 * @date 2017. 10. 3...
 *
-*  Created by kimbom on 2017. 10. 3...
-*  Copyright 2017 kimbom. All rights reserved.
+*  @brief Created by kimbom on 2017. 10. 3...\n
+*  Copyright 2017 kimbom. All rights reserved.\n
 */
 #if !defined(ISPRING_7E1_A_3_STRING_HPP_INCLUDED)
 #define ISPRING_7E1_A_3_STRING_HPP_INCLUDED
