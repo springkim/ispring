@@ -4,7 +4,7 @@
 * @date		2017. 10. 3...
 *
 *  @brief 문자열 처리 라이브러리
-*	@detail
+*	@remark
 *			Created by kimbom on 2017. 10. 3...
 *			Copyright 2017 kimbom.All rights reserved.
 */
