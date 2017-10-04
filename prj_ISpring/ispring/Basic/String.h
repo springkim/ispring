@@ -13,11 +13,9 @@
 #include<string>
 namespace ispring {
 	/**
-	*	@brief String static class
-	*	@details Provides string manipulation function.
+	*	@class String : Provides string manipulation function.
 	*	@author kimbomm
 	*	@date 2017-10-03
-	*	@version 0.0.1
 	*/
 	class String {
 	public:
