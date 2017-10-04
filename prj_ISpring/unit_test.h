@@ -1,12 +1,5 @@
 #pragma once
-#include"ispring/Console.h"
-#include"ispring/System.h"
-#include"ispring/Time.h"
-#include"ispring/Compression.h"
-#include"ispring/File.h"
-#if defined(_WIN32) && defined(__GNUC__)
-#define MinGW
-#endif
+#include"ispring\All.h"
 
 #ifndef MinGW
 #include"ispring/CV.h"
@@ -26,6 +19,7 @@ void UnitTest_Console() {
 }
 void UnitTest_System() { 
 	UNITTEST(System);
+	
 	if (ispring::OS::isAdmin()==true) {
 		puts("Admin");
 	} else {
@@ -148,3 +142,20 @@ void UnitTest_CV() {
 	}
 }
 #endif
+void UnitTest_Basic() {
+	std::string plane = ";*.cpp;*.h;*.c;*.jpg;;;;;";
+	std::vector<std::string> words = ispring::String::Tokenizer(plane, ";");
+	for (auto&word : words) {
+		std::cout << word << std::endl;
+	}
+	std::string filename = "C:/Users/spring/Documents/SourceTree/ISpring/install_ispring.exe";
+	//std::string filename = "install_ispring.exe";
+	std::cout << ispring::String::GetExtOfFile(filename) << std::endl;
+	std::cout << ispring::String::GetNameOfFile(filename) << std::endl;
+	std::cout << ispring::String::GetPureNameOfFile(filename) << std::endl;
+
+	std::cout << ispring::String::PadNum(4, 4) << std::endl;
+	std::cout << ispring::String::PadNum(12, 4) << std::endl;
+	std::cout << ispring::String::PadNum(144, 4) << std::endl;
+	std::cout << ispring::String::PadNum(2144, 4) << std::endl;
+}

@@ -170,6 +170,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ISpring\All.h" />
+    <ClInclude Include="ispring\Basic.h" />
+    <ClInclude Include="ispring\Basic\String.h" />
     <ClInclude Include="ispring\Compression\Zip.h" />
     <ClInclude Include="ispring\Console.h" />
     <ClInclude Include="ISpring\Console\xout.h" />

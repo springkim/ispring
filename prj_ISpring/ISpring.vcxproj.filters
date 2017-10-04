@@ -40,6 +40,9 @@
     <Filter Include="ispring\CV">
       <UniqueIdentifier>{74cea3d8-2c6f-4a4c-b025-c239ed71923c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ispring\Basic">
+      <UniqueIdentifier>{ebac36a8-dabd-4275-bd8b-8ddebc9dea77}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -96,6 +99,12 @@
       <Filter>ispring\CV</Filter>
     </ClInclude>
     <ClInclude Include="ispring\CV.h">
+      <Filter>ispring</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\Basic\String.h">
+      <Filter>ispring\Basic</Filter>
+    </ClInclude>
+    <ClInclude Include="ispring\Basic.h">
       <Filter>ispring</Filter>
     </ClInclude>
   </ItemGroup>
