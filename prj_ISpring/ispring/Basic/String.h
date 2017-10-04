@@ -1,10 +1,10 @@
-/*
-*  String.h
-*  ispring
+﻿/**
+* @file String.h
+* @author kimbomm
+* @date 2017. 10. 3...
 *
 *  Created by kimbom on 2017. 10. 3...
 *  Copyright 2017 kimbom. All rights reserved.
-*
 */
 #if !defined(ISPRING_7E1_A_3_STRING_HPP_INCLUDED)
 #define ISPRING_7E1_A_3_STRING_HPP_INCLUDED
@@ -13,20 +13,20 @@
 #include<string>
 namespace ispring {
 	/**
-	*	@breif String : Provides string manipulation function.
+	*	@breif String : 이 정적 클래스는 문자열을 조작하는 함수를 포함합니다.
 	*	@author kimbomm
 	*	@date 2017-10-03
 	*/
 	class String {
 	public:
 		/**
-		*	@breif Split string by token
-		*	@param std::string str : source string
-		*	@param std::string token : token
-		*	@return Divided words
-		*	@warning Remove 0-length string automatically
-		*	@details input -> ";*.cpp;*.h;*.c;*.jpg;;;;;" \n
-				      output -> {"*.cpp","*.h","*.c","*.jpg"}
+		*	@breif 문자열을 토큰을 기준으로 분리합니다.
+		*	@param std::string str : 입력 문자열
+		*	@param std::string token : 토큰
+		*	@return 잘려진 문자열들이 std::vector에 담겨서 반환됩니다.
+		*	@warning 길이가 0인 문자열은 추가되지 않습니다.
+		*	@details 예시 입력 :  ";*.cpp;*.h;*.c;*.jpg;;;;;" \n
+				      예시 출력 :  {"*.cpp","*.h","*.c","*.jpg"}
 		*/
 		static std::vector<std::string> Tokenizer(std::string str, std::string token) {
 			std::vector<std::string> ret;

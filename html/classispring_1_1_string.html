@@ -96,7 +96,7 @@ ispring::String에 대한 협력 다이어그램:</div>
 <tr class="separator:ad55ad099f0a0567cd1b1f7f4175dd775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
-<div class="textblock"><p><a class="el" href="classispring_1_1_string.html">String</a> : Provides string manipulation function. </p><dl class="section author"><dt>작성자</dt><dd>kimbomm </dd></dl>
+<div class="textblock"><p><a class="el" href="classispring_1_1_string.html">String</a> : 이 정적 클래스는 문자열을 조작하는 함수를 포함합니다. </p><dl class="section author"><dt>작성자</dt><dd>kimbomm </dd></dl>
 <dl class="section date"><dt>날짜</dt><dd>2017-10-03 </dd></dl>
 
 <p class="definition"><a class="el" href="_string_8h_source.html">String.h</a> 파일의 <a class="el" href="_string_8h_source.html#l00020">20</a> 번째 라인에서 정의되었습니다.</p>
@@ -256,17 +256,17 @@ ispring::String에 대한 협력 다이어그램:</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Split string by token </p><dl class="params"><dt>매개변수</dt><dd>
+<p>문자열을 토큰을 기준으로 분리합니다. </p><dl class="params"><dt>매개변수</dt><dd>
   <table class="params">
-    <tr><td class="paramname">std::string</td><td>str : source string </td></tr>
-    <tr><td class="paramname">std::string</td><td>token : token </td></tr>
+    <tr><td class="paramname">std::string</td><td>str : 입력 문자열 </td></tr>
+    <tr><td class="paramname">std::string</td><td>token : 토큰 </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>반환값</dt><dd>Divided words </dd></dl>
-<dl class="section warning"><dt>경고</dt><dd>Remove 0-length string automatically</dd></dl>
-<p>input -&gt; ";*.cpp;*.h;*.c;*.jpg;;;;;" <br />
- output -&gt; {"*.cpp","*.h","*.c","*.jpg"} </p>
+<dl class="section return"><dt>반환값</dt><dd>잘려진 문자열들이 std::vector에 담겨서 반환됩니다. </dd></dl>
+<dl class="section warning"><dt>경고</dt><dd>길이가 0인 문자열은 추가되지 않습니다.</dd></dl>
+<p>예시 입력 : ";*.cpp;*.h;*.c;*.jpg;;;;;" <br />
+ 예시 출력 : {"*.cpp","*.h","*.c","*.jpg"} </p>
 
 <p class="definition"><a class="el" href="_string_8h_source.html">String.h</a> 파일의 <a class="el" href="_string_8h_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
 
