@@ -26,14 +26,14 @@ var indexSectionNames =
 
 var indexSectionLabels =
 {
-  0: "All",
-  1: "Classes",
-  2: "Namespaces",
-  3: "Files",
-  4: "Functions",
-  5: "Variables",
-  6: "Typedefs",
-  7: "Macros",
-  8: "Pages"
+  0: "모두",
+  1: "클래스",
+  2: "네임스페이스들",
+  3: "파일들",
+  4: "함수",
+  5: "변수",
+  6: "타입정의",
+  7: "매크로",
+  8: "페이지들"
 };
 
