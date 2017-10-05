@@ -34,13 +34,16 @@ public:
 	int m_class = -1;
 	float m_score = 0.0F;
 	std::string m_class_name;
-	BoxSE(int c, float s, int _x, int _y, int _w, int _h,std::string name="")
-	:m_class(c),m_score(s){
+	BoxSE() {
+		m_class_name = "Unknown";
+	}
+	BoxSE(int c, float s, int _x, int _y, int _w, int _h, std::string name = "")
+		:m_class(c), m_score(s) {
 		this->x = _x;
 		this->y = _y;
 		this->width = _w;
 		this->height = _h;
-		char* lb[5] = {"th","st","nd","rd","th"};
+		char* lb[5] = { "th","st","nd","rd","th" };
 		if (name.length() == 0) {
 			m_class_name = std::to_string(m_class) + lb[m_class < 4 ? m_class : 4] + " class";
 		}
