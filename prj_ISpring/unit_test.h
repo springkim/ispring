@@ -122,9 +122,9 @@ void UnitTest_CV() {
 		int i = 0;
 		for (auto&F1:chain) {
 			cv::Vec3b color;
-			color[0] = ispring::CV::GetRGB(i)[0];
-			color[1] = ispring::CV::GetRGB(i)[1];
-			color[2] = ispring::CV::GetRGB(i)[2];
+			color[0] = (uchar)ispring::CV::GetRGB(i)[0];
+			color[1] = (uchar)ispring::CV::GetRGB(i)[1];
+			color[2] = (uchar)ispring::CV::GetRGB(i)[2];
 			for (auto& F2 : F1) {
 				out.at<cv::Vec3b>(F2.y, F2.x) = color;
 			}
@@ -152,6 +152,30 @@ void UnitTest_CV() {
 		cv::imwrite("rotate1.jpg", ispring::CV::ImageRotateOuter(img, 45));
 		cv::imwrite("rotate2.jpg", ispring::CV::ImageRotateInner(img, 45));
 	}
+}
+void UnitTest_CVEval() {
+	UNITTEST(CVEval);
+	std::vector<BoxSE> predict;
+	predict.push_back(BoxSE(0, 0.9, 10, 200, 400, 400));
+	predict.push_back(BoxSE(0, 0.86, 450, 140, 750 - 480, 420 - 150));
+
+	std::vector<BoxSE> ground_truth;
+	ground_truth.push_back(BoxSE(0, -1, 0, 180, 430, 400));
+	ground_truth.push_back(BoxSE(0, -1, 480, 150, 750-480, 420-150));
+	
+	cv::Mat img = cv::imread("../../img/test0002.jpg");
+
+	for (auto&e : predict) {
+		ispring::CVEval::DrawBoxSE(img, e,cv::Scalar(0,0,255));
+	}
+	for (auto&e : ground_truth) {
+		ispring::CVEval::DrawBoxSE(img, e, cv::Scalar(0, 0, 255));
+	}
+	
+	std::map<int, std::pair<float, float>> rp = ispring::CVEval::GetRecallPrecisionMultiClass(ground_truth, predict, 0.5F);
+	std::cout << "Recall : " << rp[0].first << std::endl;
+	std::cout << "Precision : " << rp[0].second << std::endl;
+	cv::imwrite("draw.png", img);
 }
 #endif
 void UnitTest_Basic() {

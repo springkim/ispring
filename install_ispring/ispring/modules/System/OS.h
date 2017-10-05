@@ -98,11 +98,7 @@ namespace ispring {
 				}
 				return TRUE;
 			}, (LPARAM)&tmp);
-#ifdef _WIN64
 			if (((int)(tmp >> 32))) {
-#else 
-			if (tmp) {
-#endif
 				return (HWND)tmp;
 			}
 			return GetConsoleWindow();

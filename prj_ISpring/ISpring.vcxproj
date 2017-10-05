@@ -178,6 +178,7 @@
     <ClInclude Include="ispring\modules\Compression\Winzip.h" />
     <ClInclude Include="ispring\modules\Compression\Zip.h" />
     <ClInclude Include="ispring\modules\Console\xout.h" />
+    <ClInclude Include="ispring\modules\CV\Eval.h" />
     <ClInclude Include="ispring\modules\CV\Geometry.h" />
     <ClInclude Include="ispring\modules\CV\Image.h" />
     <ClInclude Include="ispring\modules\CV\rgb.h" />

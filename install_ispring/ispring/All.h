@@ -17,7 +17,7 @@
 #include"System.h"
 #include"Web.h"
 #ifndef NO_OPENCV
-#ifdef ISPRING_WINDOWS_VISUAL_STUDIO
+#if ISPRING_VISUAL_STUDIO
 #include "CV.h"
 #endif
 #endif

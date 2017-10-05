@@ -9,6 +9,4 @@
 #if !defined(ISPRING_7E1_9_15_CV_HPP_INCLUDED)
 #define ISPRING_7E1_9_15_CV_HPP_INCLUDED
 #include"modules/CV/Image.h"
-#include"modules/CV/Geometry.h"
-#include"modules/CV/Eval.h"
 #endif  //ISPRING_7E1_9_15_CV_HPP_INCLUDED

@@ -12,7 +12,7 @@
 */
 #if !defined(ISPRING_7E1_9_D_GEOMETRY_HPP_INCLUDED)
 #define ISPRING_7E1_9_D_GEOMETRY_HPP_INCLUDED
-#include"../Verify/VerifyError.h"
+#include"../Verify/Verify.h"
 #include<iostream>
 #include<vector>
 #include<string>
@@ -86,11 +86,9 @@ namespace ispring {
 					line.push_back(chain[i]);
 				} else {
 					line.push_back(chain[i]);
-					cv::Point2f mean = std::accumulate(line.begin(), line.end(), cv::Point2f(0.0F, 0.0F), [](cv::Point2f a, cv::Point e) {return cv::Point2f(a.x + e.x, a.y + e.y); });
-					mean.x/=(int)line.size();
-					mean.y /= (int)line.size();
-					float denominator = std::accumulate(line.begin(), line.end(), float(0.0F), [&mean](float a, cv::Point e)->float {return pow(e.x - mean.x, 2.0F); });
-					float numerator = std::accumulate(line.begin(), line.end(), float(0.0F), [&mean](float a, cv::Point e)->float {return (e.x - mean.x)*(e.y - mean.y); });
+					cv::Point2f mean = std::accumulate(line.begin(), line.end(), cv::Point2f(0.0F, 0.0F), [](cv::Point2f a, cv::Point e) {return cv::Point2f(a.x + e.x, a.y + e.y); }) / (int)line.size();
+					float denominator = std::accumulate(line.begin(), line.end(), float(0.0F), [&mean](float a, cv::Point e)->int {return pow(e.x - mean.x, 2); });
+					float numerator = std::accumulate(line.begin(), line.end(), float(0.0F), [&mean](float a, cv::Point e)->int {return (e.x - mean.x)*(e.y - mean.y); });
 					float M = denominator != 0 ? (float)numerator / denominator : std::numeric_limits<float>::infinity();
 					float B = mean.y - M*mean.x;
 					//y=Mx+B;
@@ -107,7 +105,7 @@ namespace ispring {
 						i--;
 						cv::Point begin_pt = line.front();
 						cv::Point end_pt = line.back();
-						if (static_cast<int>(line.size()) >= threshold2) {
+						if (line.size() >= threshold2) {
 							int degree = GetDegree(begin_pt, end_pt);
 							if (degree < 70 || degree>110) {
 								ret.push_back(std::make_pair(begin_pt, end_pt));

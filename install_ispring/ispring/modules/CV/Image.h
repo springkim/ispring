@@ -266,7 +266,7 @@ namespace ispring {
 			int tmp = GetSystemMetrics(op) / (full ? 1 : 2);
 			(op ? sz.height : sz.width) = tmp;
 			(op ? sz.width : sz.height) = static_cast<int>(tmp * (op ? sq*sq : 1) / sq);
-			cv::resize(image, rsz, sz,0,0,cv::INTER_CUBIC);
+			cv::resize(image, rsz, sz);
 			cv::Mat out;
 			rsz.convertTo(out, CV_8UC3);
 			cv::imshow("image", out);
@@ -292,9 +292,7 @@ namespace ispring {
 #ifdef ISPRING_WINDOWS
 			char _path[MAX_PATH + 1];
 			GetTempPathA(MAX_PATH, _path);
-			std::string path = _path + std::string("ispringDisplayImage2/") + std::to_string(clock()) + ".png";
-			ispring::File::DirectoryErase(_path + std::string("ispringDisplayImage2/"));
-			ispring::File::DirectoryMake(_path + std::string("ispringDisplayImage2/"));
+			std::string path = _path + std::to_string(clock()) + ".bmp";
 			cv::imwrite(path, image);
 			if (async) {
 				ShellExecuteA(NULL, "open", path.c_str(), NULL, NULL, SW_SHOW);
@@ -319,7 +317,7 @@ namespace ispring {
 				cv::Size zsize(static_cast<int>(ratio*image.cols), static_cast<int>(ratio*image.rows));
 				cv::Mat zoomed = cv::Mat::zeros(image.size(), CV_8UC3);
 				cv::Mat small_img;
-				cv::resize(image, small_img, zsize,0,0,cv::INTER_CUBIC);
+				cv::resize(image, small_img, zsize);
 				int left_padding = (image.cols - small_img.cols) / 2;
 				int top_padding = (image.rows - small_img.rows) / 2;
 				small_img.copyTo(zoomed(cv::Rect(left_padding, top_padding, small_img.cols, small_img.rows)));
@@ -328,7 +326,7 @@ namespace ispring {
 				cv::Size zsize(static_cast<int>(ratio*image.cols), static_cast<int>(ratio*image.rows));
 				cv::Mat zoomed = cv::Mat::zeros(image.size(), CV_8UC3);
 				cv::Mat large_img;
-				cv::resize(image, large_img, zsize,0,0, cv::INTER_CUBIC);
+				cv::resize(image, large_img, zsize);
 				int left_margin = (large_img.cols - image.cols) / 2;
 				int top_margin = (large_img.rows - image.rows) / 2;
 				zoomed = large_img(cv::Rect(left_margin, top_margin, large_img.cols - left_margin * 2, large_img.rows - top_margin * 2));
@@ -448,7 +446,7 @@ namespace ispring {
 				}
 			} else {
 				int target_size = 2;
-				while (static_cast<int>(nimg.size()) > target_size*target_size) {
+				while (nimg.size() > target_size*target_size) {
 					target_size++;
 				}
 				for (int i = static_cast<int>(nimg.size()); i < target_size*target_size; i++) {
@@ -462,7 +460,7 @@ namespace ispring {
 					}
 					lines.push_back(nimg[i*target_size + target_size - 1]);
 				}
-				for (int i = 0; i < static_cast<int>(lines.size()) - 1; i++) {
+				for (int i = 0; i < lines.size() - 1; i++) {
 					cv::vconcat(lines[i], lines[i + 1], lines[i + 1]);
 					lines[i].release();
 				}
