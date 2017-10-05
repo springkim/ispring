@@ -19,3 +19,6 @@ IF EXIST "install_ispring\Debug" (
 IF EXIST "install_ispring\Release" (
 	RMDIR /S /Q "install_ispring\Release"
 )
+IF EXIST "install_ispring\ispring" (
+	RMDIR /S /Q "install_ispring\ispring"
+)
