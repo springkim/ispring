@@ -156,8 +156,8 @@ void UnitTest_CV() {
 void UnitTest_CVEval() {
 	UNITTEST(CVEval);
 	std::vector<BoxSE> predict;
-	predict.push_back(BoxSE(0, 0.9, 10, 200, 400, 400));
-	predict.push_back(BoxSE(0, 0.86, 450, 140, 750 - 480, 420 - 150));
+	predict.push_back(BoxSE(0, 0.9F, 10, 200, 400, 400));
+	predict.push_back(BoxSE(0, 0.86F, 450, 140, 750 - 480, 420 - 150));
 
 	std::vector<BoxSE> ground_truth;
 	ground_truth.push_back(BoxSE(0, -1, 0, 180, 430, 400));

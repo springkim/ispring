@@ -86,7 +86,7 @@ namespace ispring {
 				for (size_t j = 0; j < ground_truth.size(); ++j) {
 					if (IOU(predict[i], ground_truth[j]) > threshold1) {
 						if (correct[i] == -1 || ground_truth[correct[i]].m_score < ground_truth[j].m_score) {
-							correct[i] = j;
+							correct[i] = static_cast<int>(j);
 						}
 					}
 				}
@@ -98,9 +98,9 @@ namespace ispring {
 					bloom[e] = true;
 				}
 			}
-			int TP = std::count(bloom.begin(), bloom.end(), true);
-			int FN = std::count(bloom.begin(), bloom.end(), false);
-			int FP = std::count(correct.begin(), correct.end(), -1);
+			auto TP = std::count(bloom.begin(), bloom.end(), true);
+			auto FN = std::count(bloom.begin(), bloom.end(), false);
+			auto FP = std::count(correct.begin(), correct.end(), -1);
 			ret.first = (float)TP / (TP + FN);
 			ret.second = (float)TP / (TP + FP);
 			return ret;
@@ -165,11 +165,11 @@ namespace ispring {
 			int font_face = cv::FONT_HERSHEY_SIMPLEX;
 			int wh = std::max(img.cols, img.rows);
 			double scale = std::max((float)wh / 3000, 0.5F);
-			int thickness = (float)wh / 2000 + 1;
+			int thickness = static_cast<int>((float)wh / 2000 + 1);
 			int baseline = 0;
 			
 			cv::Size text = cv::getTextSize(label, font_face, scale, thickness, &baseline);
-			int padding = text.height*0.2;
+			int padding = static_cast<int>(text.height*0.2);
 			cv::Point or (box.x, box.y);
 			cv::Scalar text_color = cv::Scalar(255, 255, 255);
 			if ((c[0] + c[1] + c[2]) / 3 > 150) {
