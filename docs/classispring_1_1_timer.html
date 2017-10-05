@@ -96,13 +96,17 @@ ispring::Timer에 대한 협력 다이어그램:</div>
 <tr class="memitem:a8b91abd08683522fdc8c1f96458c932a"><td class="memTemplItemLeft" align="right" valign="top">static Timer::TimerElement&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classispring_1_1_timer.html#a8b91abd08683522fdc8c1f96458c932a">Tock</a> (T param)</td></tr>
 <tr class="memdesc:a8b91abd08683522fdc8c1f96458c932a"><td class="mdescLeft">&#160;</td><td class="mdescRight">시간 측정을 죵료합니다.  <a href="#a8b91abd08683522fdc8c1f96458c932a">더 자세히 ...</a><br /></td></tr>
 <tr class="separator:a8b91abd08683522fdc8c1f96458c932a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75667745310bcbad1a1eb6ba34fb75a0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a75667745310bcbad1a1eb6ba34fb75a0"><td class="memTemplItemLeft" align="right" valign="top">static Timer::TimerElement&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classispring_1_1_timer.html#a75667745310bcbad1a1eb6ba34fb75a0">Watch</a> (T param)</td></tr>
+<tr class="memdesc:a75667745310bcbad1a1eb6ba34fb75a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">측정된 시간을 반환합니다.  <a href="#a75667745310bcbad1a1eb6ba34fb75a0">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:a75667745310bcbad1a1eb6ba34fb75a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>이 정적 클래스는 시간을 측정하는데 사용됩니다. </p>
 <dl class="section author"><dt>작성자</dt><dd>kimbomm </dd></dl>
 <dl class="section date"><dt>날짜</dt><dd>2017-05-23 </dd></dl>
 
-<p class="definition"><a class="el" href="_timer_8h_source.html">Timer.h</a> 파일의 <a class="el" href="_timer_8h_source.html#l00042">42</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="_timer_8h_source.html">Timer.h</a> 파일의 <a class="el" href="_timer_8h_source.html#l00043">43</a> 번째 라인에서 정의되었습니다.</p>
 </div><h2 class="groupheader">멤버 함수 문서화</h2>
 <a id="a3f81b989bbf046b54dc3849d1f852023"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3f81b989bbf046b54dc3849d1f852023">&#9670;&nbsp;</a></span>Tick()</h2>
@@ -139,7 +143,7 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section warning"><dt>경고</dt><dd>같은 구분자를 Tock이 불려지기전에 사용할 수 없습니다. </dd></dl>
 
-<p class="definition"><a class="el" href="_timer_8h_source.html">Timer.h</a> 파일의 <a class="el" href="_timer_8h_source.html#l00133">133</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="_timer_8h_source.html">Timer.h</a> 파일의 <a class="el" href="_timer_8h_source.html#l00134">134</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -178,9 +182,51 @@ template&lt;typename T &gt; </div>
 </dl>
 <dl class="section return"><dt>반환값</dt><dd>TimerElement구조체를 반환합니다. 이 구조체는 curr,avg,accu 를 가지고 있으며 현재 구간 시간, 평균 구간 시간, 누적 구간 시간 입니다. </dd></dl>
 <dl class="section warning"><dt>경고</dt><dd>이 함수는 반드시 Tick이 불려진다음 호출되야 합니다. </dd></dl>
-<dl class="section remark"><dt>Remarks</dt><dd><div class="fragment"><div class="line"><a class="code" href="classispring_1_1_timer.html#a3f81b989bbf046b54dc3849d1f852023">ispring::Timer::Tick</a>(<span class="stringliteral">&quot;for&quot;</span>);</div><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 5; i++) {</div><div class="line"><a class="code" href="classispring_1_1_timer.html#a3f81b989bbf046b54dc3849d1f852023">ispring::Timer::Tick</a>(1234);</div><div class="line">Sleep(100);</div><div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;elem : &quot;</span> &lt;&lt; <a class="code" href="classispring_1_1_timer.html#a8b91abd08683522fdc8c1f96458c932a">ispring::Timer::Tock</a>(1234).accu &lt;&lt; std::endl;</div><div class="line">}</div><div class="line">std::cout &lt;&lt; <span class="stringliteral">&quot;for : &quot;</span> &lt;&lt; <a class="code" href="classispring_1_1_timer.html#a8b91abd08683522fdc8c1f96458c932a">ispring::Timer::Tock</a>(<span class="stringliteral">&quot;for&quot;</span>).curr &lt;&lt; std::endl;</div></div><!-- fragment --> </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd><div class="fragment"><div class="line"><span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 5; i++) {</div><div class="line">    <a class="code" href="classispring_1_1_timer.html#a3f81b989bbf046b54dc3849d1f852023">ispring::Timer::Tick</a>(1234);</div><div class="line">    Sleep(1000);</div><div class="line">    <a class="code" href="classispring_1_1_timer.html#a8b91abd08683522fdc8c1f96458c932a">ispring::Timer::Tock</a>(1234);</div><div class="line">}</div><div class="line">std::cout &lt;&lt; <a class="code" href="classispring_1_1_timer.html#a75667745310bcbad1a1eb6ba34fb75a0">ispring::Timer::Watch</a>(1234).avg &lt;&lt; std::endl;</div></div><!-- fragment --> </dd></dl>
 
 <p class="definition"><a class="el" href="_timer_8h_source.html">Timer.h</a> 파일의 <a class="el" href="_timer_8h_source.html#l00179">179</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a75667745310bcbad1a1eb6ba34fb75a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75667745310bcbad1a1eb6ba34fb75a0">&#9670;&nbsp;</a></span>Watch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static Timer::TimerElement ispring::Timer::Watch </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>param</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>측정된 시간을 반환합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">param</td><td>시간 측정 구분자(이 값은 char,int,float,double,string)을 지원합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>TimerElement구조체를 반환합니다. 이 구조체는 curr,avg,accu 를 가지고 있으며 현재 구간 시간, 평균 구간 시간, 누적 구간 시간 입니다. </dd></dl>
+<dl class="section warning"><dt>경고</dt><dd>이 함수는 반드시 Tick과 Tock이 끝난후 불러야 합니다. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>고전 방식의 시간 측정은 시간 측정을 위해, 변수를 항상 가지고 있어야 했습니다.<br />
+ 이 방식은 내부적으로 변수를 저장하며, 최신 기능의 std::chrono를 사용하며 코드가 깔끔해지고 정확합니다. </dd></dl>
+
+<p class="definition"><a class="el" href="_timer_8h_source.html">Timer.h</a> 파일의 <a class="el" href="_timer_8h_source.html#l00228">228</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>

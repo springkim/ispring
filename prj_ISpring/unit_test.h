@@ -35,13 +35,12 @@ void UnitTest_System() {
 }
 void UnitTest_Time() {
 	UNITTEST(Time);
-	ispring::Timer::Tick("for");
 	for (int i = 0; i < 5; i++) {
 		ispring::Timer::Tick(1234);
-		Sleep(100);
-		std::cout << "elem : " << ispring::Timer::Tock(1234).accu << std::endl;
+		Sleep(1000);
+		ispring::Timer::Tock(1234);
 	}
-	std::cout << "for : " << ispring::Timer::Tock("for").curr << std::endl;
+	std::cout << ispring::Timer::Watch(1234).avg << std::endl;
 }
 void UnitTest_Compression() {
 	UNITTEST(Compression);

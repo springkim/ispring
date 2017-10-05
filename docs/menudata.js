@@ -20,6 +20,7 @@ var menudata={children:[
 {text:"p",url:"functions.html#index_p"},
 {text:"t",url:"functions.html#index_t"},
 {text:"u",url:"functions.html#index_u"},
+{text:"w",url:"functions.html#index_w"},
 {text:"z",url:"functions.html#index_z"}]},
 {text:"함수",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
@@ -33,6 +34,7 @@ var menudata={children:[
 {text:"p",url:"functions_func.html#index_p"},
 {text:"t",url:"functions_func.html#index_t"},
 {text:"u",url:"functions_func.html#index_u"},
+{text:"w",url:"functions_func.html#index_w"},
 {text:"z",url:"functions_func.html#index_z"}]},
 {text:"변수",url:"functions_vars.html"}]}]},
 {text:"파일들",url:"files.html",children:[

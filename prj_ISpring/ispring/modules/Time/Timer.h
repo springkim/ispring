@@ -24,6 +24,7 @@
 #include<cstdio>
 #include<chrono>
 #include<typeinfo>
+#include<list>
 #include<cmath>
 #pragma warning(disable:4290)
 #include"../Verify/VerifyError.h"
@@ -98,7 +99,6 @@ namespace ispring {
 					return ret;
 				}
 			}
-
 		};
 #endif
 	private:
@@ -109,6 +109,7 @@ namespace ispring {
 		static std::vector<std::pair<double, _TimerCount>> accumulated;
 		static std::vector<_TimerType> temp;
 		static std::deque<GenericType> stk;
+		static std::list<std::pair<GenericType, TimerElement>> watch_map;
 		template<typename CONTAINER>
 		static intptr_t GetPosInContainer(CONTAINER container, const GenericType& pts) {
 			intptr_t idx = -1;
@@ -160,19 +161,18 @@ namespace ispring {
 			}
 		}
 		/**
-		*	@brief 시간 측정을 죵료합니다.
+		*	@brief 시간 측정을 죵료합니다. 
 		*	@param param 시간 측정 구분자(이 값은 char,int,float,double,string)을 지원합니다.
 		*	@return TimerElement구조체를 반환합니다. 이 구조체는 curr,avg,accu 를 가지고 있으며 현재 구간 시간, 평균 구간 시간, 누적 구간 시간 입니다.
 		*	@warning 이 함수는 반드시 Tick이 불려진다음 호출되야 합니다. 
 		*	@remark
 		*	@code{.cpp}
-		*	ispring::Timer::Tick("for");
 		*	for (int i = 0; i < 5; i++) {
-		*	ispring::Timer::Tick(1234);
-		*	Sleep(100);
-		*	std::cout << "elem : " << ispring::Timer::Tock(1234).accu << std::endl;
+		*		ispring::Timer::Tick(1234);
+		*		Sleep(1000);
+		*		ispring::Timer::Tock(1234);
 		*	}
-		*	std::cout << "for : " << ispring::Timer::Tock("for").curr << std::endl;
+		*	std::cout << ispring::Timer::Watch(1234).avg << std::endl;
 		*	@endcode
 		*/
 		template<typename T>
@@ -206,12 +206,48 @@ namespace ispring {
 			} else {
 				ISPRING_VERIFY("No matched begin entry point");
 			}
+			
+			auto it = std::find_if(watch_map.begin(), watch_map.end(), [&pts](std::pair<GenericType, TimerElement>& e)->bool { return e.first == pts; });
+			if (it == watch_map.end()) {
+				watch_map.push_front(std::make_pair(pts, tm));
+			} else {
+				it->second = tm;
+			}
 			return tm;
+		}
+		/**
+		*	@brief 측정된 시간을 반환합니다.
+		*	@param param 시간 측정 구분자(이 값은 char,int,float,double,string)을 지원합니다.
+		*	@return TimerElement구조체를 반환합니다. 이 구조체는 curr,avg,accu 를 가지고 있으며 현재 구간 시간, 평균 구간 시간, 누적 구간 시간 입니다.
+		*	@warning 이 함수는 반드시 Tick과 Tock이 끝난후 불러야 합니다.
+		*	@remark
+		*			고전 방식의 시간 측정은 시간 측정을 위해, 변수를 항상 가지고 있어야 했습니다.\n
+		*			이 방식은 내부적으로 변수를 저장하며, 최신 기능의 std::chrono를 사용하며 코드가 깔끔해지고 정확합니다.
+		*/
+		template<typename T>
+		static Timer::TimerElement Watch(T param) {
+			using GENERIC_TYPE = typename std::enable_if<
+				std::is_same<char, T>::value
+				|| std::is_same<int, T>::value
+				|| std::is_same<float, T>::value
+				|| std::is_same<double, T>::value
+				|| std::is_same<char*, T>::value
+				|| std::is_same<const char*, T>::value
+				|| std::is_same<std::string, T>::value
+				, T>::type;
+			GenericType pts;
+			pts.SetObject(param);
+			auto it = std::find_if(watch_map.begin(), watch_map.end(), [&pts](std::pair<GenericType, TimerElement>& e)->bool { return e.first == pts; });
+			if (it == watch_map.end()) {
+				ISPRING_VERIFY("No matched clock entry point");
+			}
+			return it->second;
 		}
 	};
 	SELECT_ANY std::vector<Timer::GenericType> Timer::mapped;
 	SELECT_ANY std::vector<_TimerType> Timer::temp;
 	SELECT_ANY std::deque<Timer::GenericType> Timer::stk;
 	SELECT_ANY std::vector<std::pair<double, _TimerCount>> Timer::accumulated;
+	SELECT_ANY std::list<std::pair<Timer::GenericType, Timer::TimerElement>> Timer::watch_map;
 }
 #endif

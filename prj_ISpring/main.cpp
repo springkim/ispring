@@ -6,7 +6,7 @@ int main() {
 
 //	UnitTest_Console();
 //	UnitTest_System();
-//	UnitTest_Time();
+	UnitTest_Time();
 //	UnitTest_Compression();
 //	UnitTest_File();
 //#ifndef MinGW
@@ -15,6 +15,6 @@ int main() {
 //	UnitTest_Basic();
 
 
-	UnitTest_CVEval();
+//	UnitTest_CVEval();
 	return 0;
 }
