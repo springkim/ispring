@@ -1,0 +1,10 @@
+ISpring.vcxproj
+ISpring.vcxproj.filters
+ISpring.vcxproj.user
+main.cpp
+MinGW-test.bat
+unit_test.h
+x64/
+x86/
+Debug/
+Release/
