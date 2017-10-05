@@ -1,0 +1,481 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.13"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ISpring: ispring::CVGeometry 클래스 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="BLOGO.png"/></td>
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">ISpring
+   &#160;<span id="projectnumber">kimbomm</span>
+   </div>
+   <div id="projectbrief">Integration cross-platform c++ library</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'검색');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','검색');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceispring.html">ispring</a></li><li class="navelem"><a class="el" href="classispring_1_1_c_v_geometry.html">CVGeometry</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 멤버 함수</a> &#124;
+<a href="#pub-static-methods">정적 Public 멤버 함수</a> &#124;
+<a href="classispring_1_1_c_v_geometry-members.html">모든 멤버 목록</a>  </div>
+  <div class="headertitle">
+<div class="title">ispring::CVGeometry 클래스 참조</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>이 정적 클래스는 좌표 계산을 도와 줍니다.  
+ <a href="classispring_1_1_c_v_geometry.html#details">더 자세히 ...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_geometry_8h_source.html">Geometry.h</a>&gt;</code></p>
+<div class="dynheader">
+ispring::CVGeometry에 대한 협력 다이어그램:</div>
+<div class="dyncontent">
+<div class="center"><img src="classispring_1_1_c_v_geometry__coll__graph.png" border="0" usemap="#ispring_1_1_c_v_geometry_coll__map" alt="Collaboration graph"/></div>
+<map name="ispring_1_1_c_v_geometry_coll__map" id="ispring_1_1_c_v_geometry_coll__map">
+</map>
+</div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a471ad03c6698428cf211101181d9a41d"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::pair&lt; cv::Point, cv::Point &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_geometry.html#a471ad03c6698428cf211101181d9a41d">FindLineByLeastSquareMethod</a> (std::vector&lt; cv::Point &gt; chain, float threshold1=1.0F, int threshold2=5)</td></tr>
+<tr class="memdesc:a471ad03c6698428cf211101181d9a41d"><td class="mdescLeft">&#160;</td><td class="mdescRight">점들로 최소자승법을 이용해 직선을 추출 합니다.  <a href="#a471ad03c6698428cf211101181d9a41d">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:a471ad03c6698428cf211101181d9a41d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affaa9e9c5bfc47ccd6cc9302115b87c8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_geometry.html#affaa9e9c5bfc47ccd6cc9302115b87c8">PtInTriangle</a> (cv::Point pt, cv::Point t1, cv::Point t2, cv::Point t3)</td></tr>
+<tr class="memdesc:affaa9e9c5bfc47ccd6cc9302115b87c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">점이 삼각형안에 있는지 판별합니다.  <a href="#affaa9e9c5bfc47ccd6cc9302115b87c8">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:affaa9e9c5bfc47ccd6cc9302115b87c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6df78796b56026f2bae3b1c7d0ea3f10"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_geometry.html#a6df78796b56026f2bae3b1c7d0ea3f10">PtInRectangle</a> (cv::Point pt, cv::Point t1, cv::Point t2, cv::Point t3, cv::Point t4)</td></tr>
+<tr class="memdesc:a6df78796b56026f2bae3b1c7d0ea3f10"><td class="mdescLeft">&#160;</td><td class="mdescRight">점이 사각형안에 있는지 판별합니다.  <a href="#a6df78796b56026f2bae3b1c7d0ea3f10">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:a6df78796b56026f2bae3b1c7d0ea3f10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+정적 Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a30e730999d472eddcb93c7a4ae37118e"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_geometry.html#a30e730999d472eddcb93c7a4ae37118e">GetDegree</a> (int x1, int y1, int x2, int y2)</td></tr>
+<tr class="memdesc:a30e730999d472eddcb93c7a4ae37118e"><td class="mdescLeft">&#160;</td><td class="mdescRight">두점 사이의 각도를 계산 합니다.  <a href="#a30e730999d472eddcb93c7a4ae37118e">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:a30e730999d472eddcb93c7a4ae37118e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9770e7d1858bd8ed22ad4fb6652e0980"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_geometry.html#a9770e7d1858bd8ed22ad4fb6652e0980">GetDegree</a> (cv::Point from, cv::Point to)</td></tr>
+<tr class="memdesc:a9770e7d1858bd8ed22ad4fb6652e0980"><td class="mdescLeft">&#160;</td><td class="mdescRight">두점 사이의 각도를 계산 합니다.  <a href="#a9770e7d1858bd8ed22ad4fb6652e0980">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:a9770e7d1858bd8ed22ad4fb6652e0980"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a965cf79d46dd30055f40c435a52460f7"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_geometry.html#a965cf79d46dd30055f40c435a52460f7">GetDegreeDistance</a> (int d1, int d2)</td></tr>
+<tr class="memdesc:a965cf79d46dd30055f40c435a52460f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">두 각도의 차이를 계산합니다.  <a href="#a965cf79d46dd30055f40c435a52460f7">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:a965cf79d46dd30055f40c435a52460f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
+<div class="textblock"><p>이 정적 클래스는 좌표 계산을 도와 줍니다. </p>
+<dl class="section author"><dt>작성자</dt><dd>kimbomm </dd></dl>
+<dl class="section date"><dt>날짜</dt><dd>2017-09-13 </dd></dl>
+
+<p class="definition"><a class="el" href="_geometry_8h_source.html">Geometry.h</a> 파일의 <a class="el" href="_geometry_8h_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
+</div><h2 class="groupheader">멤버 함수 문서화</h2>
+<a id="a471ad03c6698428cf211101181d9a41d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a471ad03c6698428cf211101181d9a41d">&#9670;&nbsp;</a></span>FindLineByLeastSquareMethod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::pair&lt;cv::Point, cv::Point&gt; &gt; ispring::CVGeometry::FindLineByLeastSquareMethod </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; cv::Point &gt;&#160;</td>
+          <td class="paramname"><em>chain</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>threshold1</em> = <code>1.0F</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>threshold2</em> = <code>5</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>점들로 최소자승법을 이용해 직선을 추출 합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chain</td><td>점들의 집합 </td></tr>
+    <tr><td class="paramname">threshold1</td><td>이 값보다 RMSE가 큰 군집 까지만 직선으로 간주합니다. </td></tr>
+    <tr><td class="paramname">threshold2</td><td>픽셀들이 직선이 되기위한 최소 점 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>검출된 선들의 집합 </dd></dl>
+
+<p class="definition"><a class="el" href="_geometry_8h_source.html">Geometry.h</a> 파일의 <a class="el" href="_geometry_8h_source.html#l00078">78</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a30e730999d472eddcb93c7a4ae37118e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30e730999d472eddcb93c7a4ae37118e">&#9670;&nbsp;</a></span>GetDegree() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int ispring::CVGeometry::GetDegree </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>두점 사이의 각도를 계산 합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x1</td><td>첫번째 x좌표 </td></tr>
+    <tr><td class="paramname">y1</td><td>첫번째 y좌표 </td></tr>
+    <tr><td class="paramname">x2</td><td>두번째 x좌표 </td></tr>
+    <tr><td class="paramname">y2</td><td>두번째 y좌표 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>각도(0~179) </dd></dl>
+<dl class="section warning"><dt>경고</dt><dd>결과는 0~179 사이만 출력 합니다. </dd></dl>
+
+<p class="definition"><a class="el" href="_geometry_8h_source.html">Geometry.h</a> 파일의 <a class="el" href="_geometry_8h_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a9770e7d1858bd8ed22ad4fb6652e0980"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9770e7d1858bd8ed22ad4fb6652e0980">&#9670;&nbsp;</a></span>GetDegree() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int ispring::CVGeometry::GetDegree </td>
+          <td>(</td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>from</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>to</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>두점 사이의 각도를 계산 합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">from</td><td>첫번째 좌표 </td></tr>
+    <tr><td class="paramname">to</td><td>두번째 좌표 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>각도(0~179) </dd></dl>
+<dl class="section warning"><dt>경고</dt><dd>결과는 0~179 사이만 출력 합니다. </dd></dl>
+
+<p class="definition"><a class="el" href="_geometry_8h_source.html">Geometry.h</a> 파일의 <a class="el" href="_geometry_8h_source.html#l00049">49</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a965cf79d46dd30055f40c435a52460f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a965cf79d46dd30055f40c435a52460f7">&#9670;&nbsp;</a></span>GetDegreeDistance()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int ispring::CVGeometry::GetDegreeDistance </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>d2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>두 각도의 차이를 계산합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">d1</td><td>첫번째 각도 </td></tr>
+    <tr><td class="paramname">d2</td><td>두번째 각도 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>각도의 최소 차이 </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd><div class="image">
+<img src="https://i.imgur.com/ec4bEjV.png" width="640"/>
+</div>
+ </dd></dl>
+
+<p class="definition"><a class="el" href="_geometry_8h_source.html">Geometry.h</a> 파일의 <a class="el" href="_geometry_8h_source.html#l00060">60</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a6df78796b56026f2bae3b1c7d0ea3f10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6df78796b56026f2bae3b1c7d0ea3f10">&#9670;&nbsp;</a></span>PtInRectangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ispring::CVGeometry::PtInRectangle </td>
+          <td>(</td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>t1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>t2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>t3</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>t4</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>점이 사각형안에 있는지 판별합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pt</td><td>검사할 점 </td></tr>
+    <tr><td class="paramname">t1</td><td>사각형의 첫번째 점 </td></tr>
+    <tr><td class="paramname">t2</td><td>사각형의 두번째 점 </td></tr>
+    <tr><td class="paramname">t3</td><td>사각형의 세번째 점 </td></tr>
+    <tr><td class="paramname">t4</td><td>사각형의 네번째 점 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>점이 사각형에 포함되면 true. </dd></dl>
+
+<p class="definition"><a class="el" href="_geometry_8h_source.html">Geometry.h</a> 파일의 <a class="el" href="_geometry_8h_source.html#l00148">148</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="affaa9e9c5bfc47ccd6cc9302115b87c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affaa9e9c5bfc47ccd6cc9302115b87c8">&#9670;&nbsp;</a></span>PtInTriangle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ispring::CVGeometry::PtInTriangle </td>
+          <td>(</td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>pt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>t1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>t2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Point&#160;</td>
+          <td class="paramname"><em>t3</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>점이 삼각형안에 있는지 판별합니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pt</td><td>검사할 점 </td></tr>
+    <tr><td class="paramname">t1</td><td>삼각형의 첫번째 점 </td></tr>
+    <tr><td class="paramname">t2</td><td>삼각형의 두번째 점 </td></tr>
+    <tr><td class="paramname">t3</td><td>삼각형의 세번째 점 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>반환값</dt><dd>점이 삼각형에 포함되면 true. </dd></dl>
+
+<p class="definition"><a class="el" href="_geometry_8h_source.html">Geometry.h</a> 파일의 <a class="el" href="_geometry_8h_source.html#l00132">132</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<hr/>이 클래스에 대한 문서화 페이지는 다음의 파일로부터 생성되었습니다.:<ul>
+<li>prj_ISpring/ispring/modules/CV/<a class="el" href="_geometry_8h_source.html">Geometry.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+다음에 의해 생성됨 :  &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.13
+</small></address>
+</body>
+</html>
