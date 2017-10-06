@@ -79,7 +79,10 @@ namespace ispring {
 		*	@return pair.first는 Recall 이고 pair.second는 precision 입니다.
 		*/
 		static std::pair<float,float> GetRecallPrecisionSingleClass(std::vector<BoxSE> ground_truth,std::vector<BoxSE> predict,float threshold1=0.5F) {
-			std::pair<float, float> ret;
+			std::pair<float, float> ret = { 0.0F,0.0F };
+			if (predict.size() == 0) {
+				return ret;
+			}
 			std::vector<int> correct;
 			correct.assign(predict.size(), -1);
 			for (size_t i = 0; i < predict.size(); ++i) {
