@@ -8,5 +8,6 @@ var searchData=
   ['displayimage',['DisplayImage',['../classispring_1_1_c_v.html#a915f990db506c19269a9c035fa54d9fe',1,'ispring::CV']]],
   ['displayimage2',['DisplayImage2',['../classispring_1_1_c_v.html#a127b6c8ef692d6441ff580169268be77',1,'ispring::CV']]],
   ['download',['Download',['../classispring_1_1_web.html#a4e70b34fac1e900f1a8d874bd8fdc365',1,'ispring::Web']]],
-  ['drawboxse',['DrawBoxSE',['../classispring_1_1_c_v_eval.html#a277e9c9b266ee348ab889bd88efef2e5',1,'ispring::CVEval']]]
+  ['drawboxse',['DrawBoxSE',['../classispring_1_1_c_v_eval.html#a277e9c9b266ee348ab889bd88efef2e5',1,'ispring::CVEval']]],
+  ['drawcolorboxse',['DrawColorBoxSE',['../classispring_1_1_c_v_eval.html#a166e2357f82357e18d4ad0e4db63bd8b',1,'ispring::CVEval']]]
 ];

@@ -99,6 +99,9 @@ ispring::CVEval에 대한 협력 다이어그램:</div>
 <tr class="memitem:a277e9c9b266ee348ab889bd88efef2e5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_eval.html#a277e9c9b266ee348ab889bd88efef2e5">DrawBoxSE</a> (cv::Mat img, <a class="el" href="class_box_s_e.html">BoxSE</a> box, cv::Scalar c=cv::Scalar(-1,-1,-1), std::string additional=&quot;&quot;)</td></tr>
 <tr class="memdesc:a277e9c9b266ee348ab889bd88efef2e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">BoxSE를 이미지에 라벨과 함께 그립니다.  <a href="#a277e9c9b266ee348ab889bd88efef2e5">더 자세히 ...</a><br /></td></tr>
 <tr class="separator:a277e9c9b266ee348ab889bd88efef2e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a166e2357f82357e18d4ad0e4db63bd8b"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classispring_1_1_c_v_eval.html#a166e2357f82357e18d4ad0e4db63bd8b">DrawColorBoxSE</a> (cv::Mat img, <a class="el" href="class_box_s_e.html">BoxSE</a> rect, cv::Scalar c)</td></tr>
+<tr class="memdesc:a166e2357f82357e18d4ad0e4db63bd8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">BoxSE를 이미지에 색 박스로 그립니다.  <a href="#a166e2357f82357e18d4ad0e4db63bd8b">더 자세히 ...</a><br /></td></tr>
+<tr class="separator:a166e2357f82357e18d4ad0e4db63bd8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>이 정적 클래스는 평가계산을 도와 줍니다. </p>
@@ -168,7 +171,65 @@ ispring::CVEval에 대한 협력 다이어그램:</div>
 </div>
  </dd></dl>
 
-<p class="definition"><a class="el" href="_eval_8h_source.html">Eval.h</a> 파일의 <a class="el" href="_eval_8h_source.html#l00155">155</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="_eval_8h_source.html">Eval.h</a> 파일의 <a class="el" href="_eval_8h_source.html#l00158">158</a> 번째 라인에서 정의되었습니다.</p>
+
+</div>
+</div>
+<a id="a166e2357f82357e18d4ad0e4db63bd8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a166e2357f82357e18d4ad0e4db63bd8b">&#9670;&nbsp;</a></span>DrawColorBoxSE()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void ispring::CVEval::DrawColorBoxSE </td>
+          <td>(</td>
+          <td class="paramtype">cv::Mat&#160;</td>
+          <td class="paramname"><em>img</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_box_s_e.html">BoxSE</a>&#160;</td>
+          <td class="paramname"><em>rect</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">cv::Scalar&#160;</td>
+          <td class="paramname"><em>c</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>BoxSE를 이미지에 색 박스로 그립니다. </p>
+<dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">img</td><td>박스가 그려질 이미지 </td></tr>
+    <tr><td class="paramname">box</td><td>박스 </td></tr>
+    <tr><td class="paramname">c</td><td>색상. 지정하지 않으면 GetRGB 함수를 사용합니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section remark"><dt>Remarks</dt><dd><div class="image">
+<img src="https://i.imgur.com/gCWZzVG.jpg" width="640"/>
+</div>
+ </dd></dl>
+
+<p class="definition"><a class="el" href="_eval_8h_source.html">Eval.h</a> 파일의 <a class="el" href="_eval_8h_source.html#l00204">204</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
@@ -223,7 +284,7 @@ ispring::CVEval에 대한 협력 다이어그램:</div>
 </dl>
 <dl class="section return"><dt>반환값</dt><dd>std::map의 KEY는 클래스의 인덱스 이고 VALUE는 pair&lt;float,float&gt; 로써 first는 Recall, Second는 Precision 입니다. </dd></dl>
 
-<p class="definition"><a class="el" href="_eval_8h_source.html">Eval.h</a> 파일의 <a class="el" href="_eval_8h_source.html#l00118">118</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="_eval_8h_source.html">Eval.h</a> 파일의 <a class="el" href="_eval_8h_source.html#l00121">121</a> 번째 라인에서 정의되었습니다.</p>
 
 </div>
 </div>
