@@ -109,7 +109,32 @@ namespace ispring {
 		}
 	};
 }
-#elif
-
+#elif defined(ISPRING_LINUX)
+#include<unistd.h>
+#include<stdio.h>
+#include<sys/stat.h>
+#include<iostream>
+namespace ispring{
+	class OS{
+	public:
+		static bool isAdmin() {
+			return getuid()==0;
+		}
+		static bool is64BitOS() {
+			FILE* fp=popen("arch","r");
+			char buffer[256];
+			fread(buffer,1,255,fp);
+			std::string ret=buffer;
+			return ret.find("64")!=std::string::npos;
+		}
+		static bool is64BitProcess() {
+#ifdef __x86_64__
+			return true;
+#else
+			return false;
+#endif
+		}
+	};
+}
 #endif
 #endif  //ISPRING_7E1_9_11_WINDOWS_HPP_INCLUDED

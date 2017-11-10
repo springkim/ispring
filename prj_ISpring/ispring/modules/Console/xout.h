@@ -13,6 +13,7 @@
 #if !defined(ISPRING_7E1_9_14_XOUT_HPP_INCLUDED)
 #define ISPRING_7E1_9_14_XOUT_HPP_INCLUDED
 #include"../defines.h"
+#include"../Verify/VerifyError.h"
 
 
 #ifndef DOXYGEN

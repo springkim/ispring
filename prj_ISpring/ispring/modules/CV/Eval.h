@@ -43,7 +43,7 @@ public:
 		this->y = _y;
 		this->width = _w;
 		this->height = _h;
-		char* lb[5] = { "th","st","nd","rd","th" };
+		const char* lb[5] = { "th","st","nd","rd","th" };
 		if (name.length() == 0) {
 			m_class_name = std::to_string(m_class) + lb[m_class < 4 ? m_class : 4] + " class";
 		}
@@ -176,7 +176,7 @@ namespace ispring {
 			
 			cv::Size text = cv::getTextSize(label, font_face, scale, thickness, &baseline);
 			int padding = static_cast<int>(text.height*0.2);
-			cv::Point or (box.x, box.y);
+			cv::Point pt (box.x, box.y);
 			cv::Scalar text_color = cv::Scalar(255, 255, 255);
 			if ((c[0] + c[1] + c[2]) / 3 > 150) {
 				text_color = cv::Scalar(0, 0, 0);
@@ -190,8 +190,8 @@ namespace ispring {
 				cv::rectangle(img, box, c, t);
 				
 			}
-			cv::rectangle(img, or +cv::Point(0, -text.height - padding * 2), or +cv::Point(text.width, 0), c, CV_FILLED);
-			cv::putText(img, label, or +cv::Point(0, -padding), font_face, scale, text_color, thickness);
+			cv::rectangle(img, pt +cv::Point(0, -text.height - padding * 2), pt +cv::Point(text.width, 0), c, CV_FILLED);
+			cv::putText(img, label, pt +cv::Point(0, -padding), font_face, scale, text_color, thickness);
 		}
 		/**
 		*	@brief BoxSE를 이미지에 색 박스로 그립니다.

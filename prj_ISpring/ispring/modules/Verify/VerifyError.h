@@ -2,7 +2,7 @@
 * @file		VerifyError.h
 * @author		kimbomm (springnode@gmail.com)
 * @date		2017. 05. 25...
-* @version	1.0.0
+* @version	1.1.0
 *
 *  @brief
 *			에러 처리 라이브러리
@@ -15,15 +15,19 @@
 #include<string>
 #include<sstream>
 #include<fstream>
+#include"../defines.h"
 #ifndef DOXYGEN
 #ifndef NOMINMAX
 #define NOMINMAX
-#endif
-#endif
+#endif		//NOMINMAX
+#endif		//DOXYGEN
+
+#ifndef DOXYGEN
+#if defined(ISPRING_WINDOWS)
 #include<Windows.h>
 #include <Shlwapi.h>
 #pragma comment(lib, "Shlwapi.lib")
-#ifndef DOXYGEN
+
 inline void __VerifyError(std::string msg, const char* __file__, const char* __function__, int __line__) {
 	std::ostringstream oss;
 	oss << "Verify Error : (" << msg << ") in " << __function__ << " , " << __file__ << " , line" << __line__ << std::endl;
@@ -50,7 +54,36 @@ inline void __VerifyFilePath(std::string path, const char* __file__, const char*
 		__VerifyError("can't open file", __file__, __function__, __line__);
 	}
 }
+
+#elif defined(ISPRING_LINUX)
+inline void __VerifyError(std::string msg, const char* __file__, const char* __function__, int __line__) {
+	std::ostringstream oss;
+	oss << "Verify Error : (" << msg << ") in " << __function__ << " , " << __file__ << " , line" << __line__ << std::endl;
+	std::string cmd="zenity --error --text=\""+ oss.str()+"\"";
+	system(cmd.c_str());
+	exit(1);
+}
+inline void __VerifyPointer(void* ptr, const char* __file__, const char* __function__, int __line__) {
+	if (ptr == nullptr) {
+		__VerifyError("Pointer is NULL", __file__, __function__, __line__);
+	}
+}
+inline void __VerifyFilePath(std::string path, const char* __file__, const char* __function__, int __line__) {
+	if (path.length() == 0) {
+		__VerifyError("path is empty", __file__, __function__, __line__);
+	}
+	if (access(path.c_str(),F_OK) != 0) {
+		__VerifyError("path file is incorrect", __file__, __function__, __line__);
+	}
+	std::fstream fchk(path, std::ios::in);
+	bool can_not_open = fchk.is_open();
+	fchk.close();
+	if (can_not_open == false) {
+		__VerifyError("can't open file", __file__, __function__, __line__);
+	}
+}
 #endif
+#endif		//DOXYGEN
 /**
 *	@brief FATAL에러를 출력합니다. 출력후 계속 프로그램을 진행할지 종료할지 결정합니다.
 *	@param MSG 화면에 출력할 에러 메세지 입니다.

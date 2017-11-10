@@ -2,7 +2,7 @@
 * @file		FileManager.h
 * @author		kimbomm (springnode@gmail.com)
 * @date		2017. 05. 23...
-* @version	1.0.0
+* @version	1.1.0
 *
 *  @brief
 *			파일, 폴더 조작 라이브러리
@@ -195,7 +195,105 @@ namespace ispring {
 		
 	};
 };
-#endif
 #elif defined(ISPRING_LINUX)
+#include<vector>
+#include<iostream>
+#include<fstream>
+#include<algorithm>
+#include<unistd.h>
+#include<dirent.h>
+#include<sys/stat.h>
+namespace ispring{
+    class File{
+	public:
+        static std::vector<std::string> FileList(std::string dir_path, std::string ext, bool recursive = false) {
+			std::vector<std::string> paths; //return value
+			if (dir_path.back() != '/' && dir_path.back() != '\\') {
+				dir_path.push_back('/');
+			}
+			std::string str_exp = dir_path + "*.*";
+			std::vector<std::string> allow_ext;
+			std::string::size_type offset = 0;
+			while (offset < ext.length()) {
+				std::string str = ext.substr(offset, ext.find(';', offset) - offset);
+				std::transform(str.begin(), str.end(), str.begin(), toupper);
+				offset += str.length() + 1;
+				std::string::size_type pos = str.find_last_of('.');
+				pos = pos == std::string::npos ? 0 : pos + 1;
+				allow_ext.push_back(str.substr(pos, str.length()));
+			}
+			DIR* fd=opendir(dir_path.c_str());
+			if (fd == NULL) {
+				return paths;
+			}
+			struct dirent* hFind=NULL;
+			while(hFind=readdir(fd)){
+				std::string path = hFind->d_name;
+				if(hFind->d_type==DT_REG) {    //is File?
+					std::string path_ext = path.substr(path.find_last_of('.') + 1, path.length());  //파일의 확장자 추출
+					std::transform(path_ext.begin(), path_ext.end(), path_ext.begin(), toupper);
+					int i = -1;
+					while (++i < (int) allow_ext.size() && allow_ext[i] != path_ext);
+					if (i < (int) allow_ext.size() || allow_ext.front() == "*") {    //allow_ext에 포함되어있으면
+						paths.push_back(dir_path + path);
+					}
+				}else if (recursive == true && path != "." && path != "..") {	//is Directory?
+					std::vector<std::string> temps = FileList(dir_path + path, ext, recursive);
+					for (auto&temp : temps) {
+						paths.push_back(temp);
+					}
+				}
+			}
+			closedir(fd);
+			return paths;   //RVO
+		}
+		static bool FileExist(std::string file) {
+			return access(file.c_str(),F_OK)==0;
+		}
+		static bool FileErase(std::string file) {
+			return remove(file.c_str()) == 0;
+		}
+		static bool FileCopy(std::string src, std::string dst) {
+			//https://stackoverflow.com/questions/3680730/c-fileio-copy-vs-systemcp-file1-x-file2-x
+			std::ifstream f1 (src, std::fstream::binary);
+			std::ofstream f2 (dst, std::fstream::trunc|std::fstream::binary);
+			if(f1.is_open()==false || f2.is_open()==false){
+				f1.close();
+				f2.close();
+				return false;
+			}
+			f2 << f1.rdbuf ();
+			f2.close();
+			f1.close();
+			return true;
+		}
+		static int64_t FileSize(std::string file){
+			FILE* fp=fopen(file.c_str(),"r");
+			fseek(fp,0,SEEK_END);
+			long sz=ftell(fp);
+			fclose(fp);
+			return (int64_t)sz;
+		}
+		static bool DirectoryErase(std::string dir_path, bool noRecycleBin = true) {
+			std::string cmd="rm -r " + dir_path;
+			return system(cmd.c_str())==0;
+		}
+		static bool DirectoryCopy(std::string src, std::string dst) {
+			std::string cmd="cp -r " + src + " " + dst;
+			return system(cmd.c_str())==0;
+		}
 
+		static bool DirectoryMake(std::string dir) {
+			int r=mkdir(dir.c_str(),S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+			return r == 0;
+		}
+		static bool DirectoryExist(std::string dir) {
+			struct stat statbuf;
+			if (stat(dir.c_str(), &statbuf) != 0)
+				return 0;
+			return S_ISDIR(statbuf.st_mode);
+		}
+    };
+}
+#endif
 #endif

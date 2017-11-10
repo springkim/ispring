@@ -10,7 +10,10 @@
 *			Created by kimbom on 2017. 9. 21...
 *			Copyright 2017 kimbom.All rights reserved.
 */
+#include<atomic>
+#if defined(ISPRING_WINDOWS)
 #include"Winzip.h"
+
 namespace ispring {
 	/**
 	*	@brief 이 정적 클래스는 Zip 포맷을 다룹니다.
@@ -167,3 +170,61 @@ namespace ispring {
 		}
 	};
 }
+#elif defined(ISPRING_LINUX)
+
+#include"Gnuzip.h"
+namespace ispring{
+	class Zip{
+	public:
+		static void Compress(std::string folder, std::string _password = "", std::atomic<int>* progress = nullptr) {
+				std::vector<std::string> args={"zip","zip","-r"};
+				args.push_back(folder+".zip");
+				args.push_back(".");
+				args.push_back("-i");
+				args.push_back(folder+"/*");
+				std::vector<std::string> files=ispring::File::FileList(folder,"*.*",true);
+				ispring_3rdparty::ZipWithProgress(args,progress,files.size());
+		}
+		static void Compress(std::string zip_name, std::vector<std::string> files, std::string _password = "", std::atomic<int>* progress = nullptr) {
+			//zip ar.zip -@ < list.txt
+			std::string listfile=ispring_3rdparty::MakeTempZipFile();
+			std::fstream fout;
+			fout.open(listfile,std::ios::out);
+			for(auto&file:files){
+				fout << file << std::endl;
+			}
+			fout.close();
+			int fd = open(listfile.c_str(), O_RDONLY, 0666);
+			dup2(fd,STDIN_FILENO);
+			close(fd);
+			std::vector<std::string> args={"zip","zip",zip_name,".","-@"};
+			ispring_3rdparty::ZipWithProgress(args,progress,files.size());
+			remove(listfile.c_str());
+		}
+		static void Uncompress(std::string file, std::string _password = "", std::atomic<int>* progress = nullptr) {
+			//Get number of files.
+			std::string cmd="unzip -Z -l " + file;
+			FILE* fp=popen(cmd.c_str(),"r");
+			std::string buffer;
+			char c;
+			while(fread(&c,1,1,fp)==1 && c!=EOF) {
+				buffer.push_back(c);
+			}
+			while(buffer.back()=='\n'){
+				buffer.pop_back();
+			}
+			std::string::size_type crlf=buffer.find_last_of('\n');
+			buffer=buffer.substr(crlf+1,buffer.length()-crlf);
+			int file_cnt=atoi(buffer.c_str());
+			//Unzip
+			
+			std::string pure=ispring::String::GetPureNameOfFile(file);
+			if(ispring::File::DirectoryExist(pure)==true){
+				ispring::File::DirectoryErase(pure);
+			}
+			std::vector<std::string> args={"unzip","unzip","-d",pure,file};
+			ispring_3rdparty::ZipWithProgress(args,progress,file_cnt);
+		}
+	};
+}
+#endif

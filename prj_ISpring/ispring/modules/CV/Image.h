@@ -20,7 +20,9 @@
 #define NOMINMAX
 #endif
 #endif
+#ifdef ISPRING_WINDOWS
 #include<Windows.h>
+#endif
 #include"../Verify/VerifyError.h"
 #include"../System/OS.h"
 namespace ispring {
