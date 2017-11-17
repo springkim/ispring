@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['uncompress',['Uncompress',['../classispring_1_1_zip.html#a1a6d5fdc96b081d11260e337267a2cbd',1,'ispring::Zip']]]
+  ['zoom',['Zoom',['../classispring_1_1_c_v.html#aa021089c54d301a630e9e74c5841a6b7',1,'ispring::CV']]]
 ];

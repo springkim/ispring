@@ -11,5 +11,6 @@ var searchData=
   ['getrecallprecisionmulticlass',['GetRecallPrecisionMultiClass',['../classispring_1_1_c_v_eval.html#adf20790c0aae959ea2fee3d48fa98da7',1,'ispring::CVEval']]],
   ['getrecallprecisionsingleclass',['GetRecallPrecisionSingleClass',['../classispring_1_1_c_v_eval.html#a4df486b14e28985b9aecd3a876f116c9',1,'ispring::CVEval']]],
   ['getrgb',['GetRGB',['../classispring_1_1_c_v.html#af88fefd2343eaf3321a94591b0725a12',1,'ispring::CV']]],
-  ['glueimage',['GlueImage',['../classispring_1_1_c_v.html#a2aaa3242c9c47611f146637763a61252',1,'ispring::CV']]]
+  ['glueimage',['GlueImage',['../classispring_1_1_c_v.html#a2aaa3242c9c47611f146637763a61252',1,'ispring::CV']]],
+  ['gnuzip_2eh',['Gnuzip.h',['../_gnuzip_8h.html',1,'']]]
 ];
