@@ -131,6 +131,9 @@
     <ClInclude Include="ispring\modules\CV\Eval.h">
       <Filter>ispring\modules\CV</Filter>
     </ClInclude>
+    <ClInclude Include="ispring\modules\CV\Plot.h">
+      <Filter>ispring\modules\CV</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\docs\README.md">

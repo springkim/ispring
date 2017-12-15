@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['clear',['Clear',['../classispring_1_1_plot.html#a3f4f9158df1142153f17b0bf28d5246c',1,'ispring::Plot']]],
   ['compression_2eh',['Compression.h',['../_compression_8h.html',1,'']]],
   ['console_2eh',['Console.h',['../_console_8h.html',1,'']]],
   ['cv',['CV',['../classispring_1_1_c_v.html',1,'ispring']]],

@@ -160,7 +160,7 @@ namespace ispring {
 			if (box.m_score >=0) {
 				label += "(" + std::to_string(box.m_score).substr(0, 4) + ")";
 			} else {
-				label += "(GroundTruth)";
+				label += "(GT)";
 			}
 			if (additional.length() > 0) {
 				label += "{" + additional + "}";
@@ -186,33 +186,22 @@ namespace ispring {
 			if (box.m_score >= 0) {
 				cv::rectangle(img, box, c, t);
 			} else {
-				cv::rectangle(img, box, text_color, t*2+1);
 				cv::rectangle(img, box, c, t);
-				
 			}
-			cv::rectangle(img, pt +cv::Point(0, -text.height - padding * 2), pt +cv::Point(text.width, 0), c, CV_FILLED);
-			cv::putText(img, label, pt +cv::Point(0, -padding), font_face, scale, text_color, thickness);
+			cv::rectangle(img, pt +cv::Point(0, (text.height + padding * 2)), pt +cv::Point(text.width, 0), c, CV_FILLED);
+			cv::putText(img, label, pt +cv::Point(0, text.height), font_face, scale, text_color, thickness);
 		}
 		/**
 		*	@brief BoxSE를 이미지에 색 박스로 그립니다.
 		*	@param img 박스가 그려질 이미지
 		*	@param box 박스
-		*	@param c 색상. 지정하지 않으면 GetRGB 함수를 사용합니다.
+		*	@param c 색상. 
 		*	@remark
 		*		<img src="https://i.imgur.com/gCWZzVG.jpg" width="640">
 		*/
 		static void DrawColorBoxSE(cv::Mat img, BoxSE rect, cv::Scalar c) {
-			auto MakeColorBox = [](int w, int h, cv::Scalar c)->cv::Mat {
-				std::vector<cv::Mat> planes;
-				planes.push_back(cv::Mat::zeros(h, w, CV_8UC1) + c[2]);
-				planes.push_back(cv::Mat::zeros(h, w, CV_8UC1) + c[1]);
-				planes.push_back(cv::Mat::zeros(h, w, CV_8UC1) + c[0]);
-				cv::Mat box;
-				cv::merge(planes, box);
-				return box;
-			};
 			cv::Mat crop = img(rect);
-			cv::Mat box = MakeColorBox(rect.width, rect.height,c);
+			cv::Mat box=cv::Mat::zeros(rect.height, rect.width, CV_8UC3) + c;
 			crop = 0.3*crop + 0.7*box;
 		}
 	};

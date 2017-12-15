@@ -31,7 +31,7 @@
 inline void __VerifyError(std::string msg, const char* __file__, const char* __function__, int __line__) {
 	std::ostringstream oss;
 	oss << "Verify Error : (" << msg << ") in " << __function__ << " , " << __file__ << " , line" << __line__ << std::endl;
-	if (MessageBoxA(NULL, oss.str().c_str(), "SCVL Error", MB_RETRYCANCEL) == IDCANCEL) {
+	if (MessageBoxA(NULL, oss.str().c_str(), "ispring Error", MB_RETRYCANCEL) == IDCANCEL) {
 		exit(1);
 	}
 }

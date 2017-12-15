@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rgb_2eh',['rgb.h',['../rgb_8h.html',1,'']]]
+  ['plot_2eh',['Plot.h',['../_plot_8h.html',1,'']]]
 ];

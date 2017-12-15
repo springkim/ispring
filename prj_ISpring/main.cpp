@@ -13,11 +13,12 @@ void MainUnitTest(){
 	UnitTest_CV();
 
 	UnitTest_CVEval();
-	//ISPRING_VERIFY("hello");
+	UnitTest_CVPlot();
 }
 int main() {
 	
 	MainUnitTest();
+	
 	
 	
 	return 0;

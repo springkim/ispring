@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['padnum',['PadNum',['../classispring_1_1_string.html#ad55ad099f0a0567cd1b1f7f4175dd775',1,'ispring::String']]],
-  ['pixelchain',['PixelChain',['../classispring_1_1_c_v.html#aa162fb226f4df1c3ecb09fbf408db4fa',1,'ispring::CV']]],
-  ['pixeldisconnect',['PixelDisconnect',['../classispring_1_1_c_v.html#a3b36b1cc0d7ae54b6669ee29fc63ed5b',1,'ispring::CV']]],
-  ['ptinrectangle',['PtInRectangle',['../classispring_1_1_c_v_geometry.html#a6df78796b56026f2bae3b1c7d0ea3f10',1,'ispring::CVGeometry']]],
-  ['ptintriangle',['PtInTriangle',['../classispring_1_1_c_v_geometry.html#affaa9e9c5bfc47ccd6cc9302115b87c8',1,'ispring::CVGeometry']]]
+  ['imagerotateinner',['ImageRotateInner',['../classispring_1_1_c_v.html#a6c5f5c5294363c7fbacfb06b5a32cadf',1,'ispring::CV']]],
+  ['imagerotateouter',['ImageRotateOuter',['../classispring_1_1_c_v.html#a72b4a7495d676769e4c2ea9af6def9d7',1,'ispring::CV']]],
+  ['iou',['IOU',['../classispring_1_1_c_v_eval.html#a289b7e1fd8e0bb85dc924203b25bcc44',1,'ispring::CVEval']]],
+  ['is64bitos',['is64BitOS',['../classispring_1_1_o_s.html#ab03a15c69e23575c589439ab191caf07',1,'ispring::OS']]],
+  ['is64bitprocess',['is64BitProcess',['../classispring_1_1_o_s.html#a66698920d04d595ea77bdd45c2bc3e94',1,'ispring::OS']]],
+  ['isadmin',['isAdmin',['../classispring_1_1_o_s.html#a877aaa2f92613294aa1b0f049d783c39',1,'ispring::OS']]]
 ];

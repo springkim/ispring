@@ -181,6 +181,7 @@
     <ClInclude Include="ispring\modules\CV\Eval.h" />
     <ClInclude Include="ispring\modules\CV\Geometry.h" />
     <ClInclude Include="ispring\modules\CV\Image.h" />
+    <ClInclude Include="ispring\modules\CV\Plot.h" />
     <ClInclude Include="ispring\modules\CV\rgb.h" />
     <ClInclude Include="ispring\modules\defines.h" />
     <ClInclude Include="ispring\modules\File\FileManager.h" />
