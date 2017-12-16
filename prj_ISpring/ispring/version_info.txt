@@ -1,1 +1,1 @@
-<ispring-version>1.2.0</ispring-version>
+<ispring-version>1.2.1</ispring-version>

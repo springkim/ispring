@@ -12,9 +12,10 @@
 */
 #if !defined(ISPRING_7E1_05_17_IMAGE_H_INCLUDED)
 #define ISPRING_7E1_05_17_IMAGE_H_INCLUDED
+#include<opencv2/opencv.hpp>
 #include"../defines.h"
 #include"rgb.h"
-#include<opencv2/opencv.hpp>
+
 #ifndef DOXYGEN
 #ifndef NOMINMAX
 #define NOMINMAX

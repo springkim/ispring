@@ -1,7 +1,7 @@
 ﻿#include<iostream>
 #include<thread>
+#include<opencv2/opencv.hpp>
 #include"unit_test.h"
-#include"ispring/modules/File/FileManager.h"
 void MainUnitTest(){
 	UnitTest_Basic();
 	UnitTest_Console();

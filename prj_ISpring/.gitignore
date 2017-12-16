@@ -8,3 +8,8 @@ x64/
 x86/
 Debug/
 Release/
+.idea/
+CMakeLists.txt
+*.bat
+*.md
+*.sh

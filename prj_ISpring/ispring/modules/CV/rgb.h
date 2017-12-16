@@ -929,7 +929,6 @@ namespace ispring_3rdparty {
 		{ 86,174,87 },		//dark pastel green
 		{ 172,194,217 },		//cloudy blue
 	};
-
 }
 #endif //DOXYGEN
 #endif  //ISPRING_7E1_A_4_RGB_HPP_INCLUDED

@@ -10,6 +10,8 @@
 #include "ispring/System.h"
 #include"ispring/Time.h"
 #include"ispring/Compression.h"
+
+
 #include"ispring/CV.h"
 void UnitTest_CVPlot() {
 	UNITTEST(CVPlot);
@@ -108,6 +110,8 @@ void UnitTest_CV() {
 		cv::imwrite("rotate2.jpg", ispring::CV::ImageRotateInner(img, 45));
 	}
 }
+
+
 void UnitTest_Compression() {
 	UNITTEST(Compression);
 	puts("make zip_test folder...");

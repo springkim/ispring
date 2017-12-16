@@ -36,8 +36,8 @@ namespace ispring {
 	class Plot {
 		cv::Size m_size;							/*그래프(cv::Mat) 의 크기를 지정 합니다.*/
 		std::vector<PlotElement> m_elem;		/*PlotElement들을 저장합니다.*/
-		size_t m_maxinfo = 11;					/* x,y 축에 표시할 정보의 개수를 나타냅니다.*/
-		size_t m_thickness = 1;					/*그래프의 두께를 지정 합니다.*/
+		int m_maxinfo = 11;					/* x,y 축에 표시할 정보의 개수를 나타냅니다.*/
+		int m_thickness = 1;					/*그래프의 두께를 지정 합니다.*/
 		bool b_graph_only = false;				/*그래프 만을 표시할지 지정 합니다.*/
 		cv::Scalar m_text_color;					/*텍스트의 색상을 지정 합니다.*/
 		cv::Scalar m_bg_color;					/*그래프의 배경색을 지정 합니다.*/
@@ -55,14 +55,14 @@ namespace ispring {
 		*	@warning 그래프의 크기가 작을 경우, 모든 정보가 표기되지 않을 수 도 있습니다.
 		*/
 		void SetMaxInfo(size_t info) {
-			m_maxinfo = info;
+			m_maxinfo = static_cast<int>(info);
 		}
 		/**
 		*	@brief 그래프 선의 두께를 지정 합니다.
 		*	@param thickness 그래프 선의 두께
 		*/
 		void SetThickness(size_t thickness) {
-			m_thickness = thickness;
+			m_thickness = static_cast<int>(thickness);
 		}
 		/**
 		*	@brief 그래프만 출력할지를 지정 합니다.
@@ -154,8 +154,8 @@ namespace ispring {
 			//Draw x
 			cv::line(x_info, cv::Point(100, 0), cv::Point(x_info.cols - 100, 0), fontcolor, 1);
 			for (int i = 0; i < x_numOfInfo; i++) {
-				int idx = (vx.size() - 1)*i / (x_numOfInfo - 1);
-				int beg_pt = (x_info.cols - 1 - 200)*idx / (vx.size() - 1);
+				int idx = static_cast<int>((vx.size() - 1)*i / (x_numOfInfo - 1));
+				int beg_pt = static_cast<int>((x_info.cols - 1 - 200)*idx / (vx.size() - 1));
 
 				std::ostringstream oss;
 				oss << std::setprecision(5) << vx[idx];
@@ -170,8 +170,8 @@ namespace ispring {
 			}
 			cv::line(y_info, cv::Point(100 - 1, 100 - 1), cv::Point(100 - 1, y_info.rows - 100 - 1), fontcolor, 1);
 			for (int i = 0; i < y_numOfInfo; i++) {
-				int idx = (vy.size() - 1)*i / (y_numOfInfo - 1);
-				int beg_pt = (y_info.rows - 1 - 100) - ((y_info.rows - 1 - 200)*idx / (vy.size() - 1));
+				int idx = static_cast<int>((vy.size() - 1)*i / (y_numOfInfo - 1));
+				int beg_pt = static_cast<int>((y_info.rows - 1 - 100) - ((y_info.rows - 1 - 200)*idx / (vy.size() - 1)));
 				std::ostringstream oss;
 				oss << std::setprecision(5) << vy[idx];
 				int baseline = 0;
