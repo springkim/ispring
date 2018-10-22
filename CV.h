@@ -12,4 +12,5 @@
 #include"modules/CV/Geometry.h"
 #include"modules/CV/Eval.h"
 #include"modules/CV/Plot.h"
+#include"modules/CV/Draw.h"
 #endif  //ISPRING_7E1_9_15_CV_HPP_INCLUDED
