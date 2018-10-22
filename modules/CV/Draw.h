@@ -10,8 +10,8 @@
 *			Created by kimbom on 2018. 10. 22...
 *			Copyright 2017 kimbom.All rights reserved.
 */
-#if !defined(ISPRING_7E1_05_17_IMAGE_H_INCLUDED)
-#define ISPRING_7E1_05_17_IMAGE_H_INCLUDED
+#if !defined(ISPRING_7E1_05_17_DRAW_H_INCLUDED)
+#define ISPRING_7E1_05_17_DRAW_H_INCLUDED
 #include<opencv2/opencv.hpp>
 #include"../defines.h"
 #include"rgb.h"
@@ -38,15 +38,17 @@ namespace ispring {
 			cv::ellipse(mask, ellipse, cv::Scalar(255), CV_FILLED);
 			for (size_t y = 0; y < image.rows; y++) {
 				for (size_t x = 0; x < image.cols; x++) {
-					if (mask.at<uchar>(y, x) != 0) {
-						image.at<cv::Vec3b>(y, x) = image.at<cv::Vec3b>(y, x)*(1 - alpha) + cv::Vec3b(color[0], color[1], color[2])*(alpha);
+					if (mask.at<uchar>((int)y, (int)x) != 0) {
+						image.at<cv::Vec3b>((int)y, (int)x) 
+							= image.at<cv::Vec3b>((int)y, (int)x)*(1 - alpha) 
+							+ cv::Vec3b((uchar)color[0], (uchar)color[1], (uchar)color[2])*(alpha);
 					}
 				}
 			}
 		}
 		inline void DrawRectangleA(cv::Mat& image, cv::Rect rect, cv::Scalar color, float alpha) {
-			cv::Mat crop = img(rect);
-			cv::Mat box = cv::Mat::zeros(rect.height, rect.width, CV_8UC3) + c;
+			cv::Mat crop = image(rect);
+			cv::Mat box = cv::Mat::zeros(rect.height, rect.width, CV_8UC3) + color;
 			crop = (1-alpha)*crop + alpha*box;
 		}
 		inline void DrawAnonBox(cv::Mat& img, cv::Rect rect, std::string text) {
@@ -60,8 +62,8 @@ namespace ispring {
 				cv::Point tr = cv::Point(rect.x + rect.width, rect.y);
 				cv::Point bl = cv::Point(rect.x, rect.y + rect.height);
 				cv::Point br = rect.br();
-				cv::Point wrto = cv::Point(rect.width*ratio, 0);
-				cv::Point hrto = cv::Point(0, rect.height*ratio);
+				cv::Point wrto = cv::Point2d(rect.width*ratio, 0);
+				cv::Point hrto = cv::Point2d(0, rect.height*ratio);
 
 				cv::line(img, tl, tl + wrto, color, 1, CV_AA);
 				cv::line(img, tr, tr - wrto, color, 1, CV_AA);

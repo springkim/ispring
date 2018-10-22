@@ -14,6 +14,7 @@
 #define ISPRING_7E1_05_17_IMAGE_H_INCLUDED
 #include<opencv2/opencv.hpp>
 #include"../defines.h"
+#include"../File/FileManager.h"
 #include"rgb.h"
 
 #ifndef DOXYGEN
@@ -482,7 +483,7 @@ namespace ispring {
 		*	@param hbmp HBITMAP 이미지
 		*	@return cv::Mat
 		*/
-		cv::Mat HBITMAP2cvMat(HBITMAP hbmp) {
+		inline cv::Mat HBITMAP2cvMat(HBITMAP hbmp) {
 			static HWND hwnd = nullptr;
 			if (hwnd == nullptr) {
 				hwnd = ispring::OS::GetHWND();
