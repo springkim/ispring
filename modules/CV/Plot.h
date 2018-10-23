@@ -158,7 +158,9 @@ namespace ispring {
 				int beg_pt = static_cast<int>((x_info.cols - 1 - 200)*idx / (vx.size() - 1));
 
 				std::ostringstream oss;
-				oss << std::setprecision(5) << vx[idx];
+				if (vx.size() > idx) {
+					oss << std::setprecision(5) << vx[idx];
+				}
 				int baseline = 0;
 				cv::Size sz = cv::getTextSize(oss.str(), fontface, fontscale, fontthickness, &baseline);
 				cv::putText(x_info, oss.str(), cv::Point(100 + beg_pt - sz.width / 2, 50 - sz.height / 2), fontface, fontscale, fontcolor, fontthickness);
@@ -173,7 +175,9 @@ namespace ispring {
 				int idx = static_cast<int>((vy.size() - 1)*i / (y_numOfInfo - 1));
 				int beg_pt = static_cast<int>((y_info.rows - 1 - 100) - ((y_info.rows - 1 - 200)*idx / (vy.size() - 1)));
 				std::ostringstream oss;
-				oss << std::setprecision(5) << vy[idx];
+				if (vy.size() > idx) {
+					oss << std::setprecision(5) << vy[idx];
+				}
 				int baseline = 0;
 				cv::Size sz = cv::getTextSize(oss.str(), fontface, fontscale, fontthickness, &baseline);
 				cv::putText(y_info, oss.str(), cv::Point(50 - sz.width / 2, beg_pt + sz.height / 2), fontface, fontscale, fontcolor, fontthickness);
