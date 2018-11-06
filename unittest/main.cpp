@@ -14,6 +14,7 @@ void MainUnitTest(){
 
 	UnitTest_CVEval();
 	UnitTest_CVPlot();
+	UnitTest_CVViz();
 }
 int main() {
 	

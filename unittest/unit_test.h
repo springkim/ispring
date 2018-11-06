@@ -38,6 +38,29 @@ void UnitTest_CVPlot() {
 	cv::Mat img = plot.Draw();
 	cv::imwrite("plot.png", img);
 }
+void UnitTest_CVViz() {
+	UNITTEST(CVViz);
+	cv::Mat img = cv::imread("img/test0002.jpg",cv::IMREAD_GRAYSCALE);
+	
+	
+	cv::HOGDescriptor hog;
+	cv::Size winsize(128, 128);
+	cv::Size cellsize(4, 4);
+	hog.winSize = winsize;
+	hog.blockSize = cellsize * 2;;
+	hog.blockStride = cellsize;
+	hog.cellSize = cellsize;
+	hog.nbins = 9;
+	std::vector<float> hog_features;
+	std::vector<cv::Point> loc;
+	cv::Mat hog_img;
+	cv::resize(img, hog_img, winsize, 0, 0, cv::INTER_AREA);
+	hog.compute(img, hog_features, cv::Size(0, 0), cv::Size(0, 0), loc);
+	cv::Mat hog_viz = ispring::CV::HogVisualization(hog, hog_img, hog_features, 5, 3, cv::Scalar(255, 255, 255));
+	cv::resize(hog_viz, img, img.size());
+	cv::imshow("hog visualization", img);
+	cv::waitKey();
+}
 void UnitTest_CVEval() {
 	UNITTEST(CVEval);
 	std::vector<BoxSE> predict;
