@@ -209,6 +209,7 @@ namespace ispring {
 	private:
 		std::map<std::string, xstream*> m_xstream;
 		std::string GetKey() {
+			static int local = 0;
 			//https://stackoverflow.com/questions/10654258/get-millisecond-part-of-time
 			SYSTEMTIME stime;
 			FILETIME ftime;
@@ -218,10 +219,11 @@ namespace ispring {
 			FileTimeToSystemTime(&ftime, &stime);
 			char buf[256];
 #ifdef _MSC_VER
-			sprintf_s(buf, "%d%d%d%d%d%d%d", stime.wYear, stime.wMonth, stime.wDay, stime.wHour, stime.wMinute, stime.wSecond, stime.wMilliseconds);
+			sprintf_s(buf, "%d%d%d%d%d%d%d%d", stime.wYear, stime.wMonth, stime.wDay, stime.wHour, stime.wMinute, stime.wSecond, stime.wMilliseconds,local);
 #elif defined(__GNUC__)
-			sprintf(buf, "%d%d%d%d%d%d%d", stime.wYear, stime.wMonth, stime.wDay, stime.wHour, stime.wMinute, stime.wSecond, stime.wMilliseconds);
+			sprintf(buf, "%d%d%d%d%d%d%d%d", stime.wYear, stime.wMonth, stime.wDay, stime.wHour, stime.wMinute, stime.wSecond, stime.wMilliseconds,local);
 #endif
+			local++;
 			return buf;
 		}
 		std::string Compile(bool _override = false) {

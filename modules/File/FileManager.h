@@ -203,9 +203,8 @@ namespace ispring {
 #include<dirent.h>
 #include<sys/stat.h>
 namespace ispring{
-    class File{
-	public:
-        static std::vector<std::string> FileList(std::string dir_path, std::string ext, bool recursive = false) {
+    namespace File{
+        inline std::vector<std::string> FileList(std::string dir_path, std::string ext, bool recursive = false) {
 			std::vector<std::string> paths; //return value
 			if (dir_path.back() != '/' && dir_path.back() != '\\') {
 				dir_path.push_back('/');
@@ -246,13 +245,13 @@ namespace ispring{
 			closedir(fd);
 			return paths;   //RVO
 		}
-		static bool FileExist(std::string file) {
+		inline bool FileExist(std::string file) {
 			return access(file.c_str(),F_OK)==0;
 		}
-		static bool FileErase(std::string file) {
+		inline bool FileErase(std::string file) {
 			return remove(file.c_str()) == 0;
 		}
-		static bool FileCopy(std::string src, std::string dst) {
+		inline bool FileCopy(std::string src, std::string dst) {
 			//https://stackoverflow.com/questions/3680730/c-fileio-copy-vs-systemcp-file1-x-file2-x
 			std::ifstream f1 (src, std::fstream::binary);
 			std::ofstream f2 (dst, std::fstream::trunc|std::fstream::binary);
@@ -266,27 +265,27 @@ namespace ispring{
 			f1.close();
 			return true;
 		}
-		static int64_t FileSize(std::string file){
+		inline int64_t FileSize(std::string file){
 			FILE* fp=fopen(file.c_str(),"r");
 			fseek(fp,0,SEEK_END);
 			long sz=ftell(fp);
 			fclose(fp);
 			return (int64_t)sz;
 		}
-		static bool DirectoryErase(std::string dir_path, bool noRecycleBin = true) {
+		inline bool DirectoryErase(std::string dir_path, bool noRecycleBin = true) {
 			std::string cmd="rm -r " + dir_path;
 			return system(cmd.c_str())==0;
 		}
-		static bool DirectoryCopy(std::string src, std::string dst) {
+		inline bool DirectoryCopy(std::string src, std::string dst) {
 			std::string cmd="cp -r " + src + " " + dst;
 			return system(cmd.c_str())==0;
 		}
 
-		static bool DirectoryMake(std::string dir) {
+		inline bool DirectoryMake(std::string dir) {
 			int r=mkdir(dir.c_str(),S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 			return r == 0;
 		}
-		static bool DirectoryExist(std::string dir) {
+		inline bool DirectoryExist(std::string dir) {
 			struct stat statbuf;
 			if (stat(dir.c_str(), &statbuf) != 0)
 				return 0;

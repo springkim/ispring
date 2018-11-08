@@ -59,7 +59,8 @@ void UnitTest_CVViz() {
 	cv::Mat hog_viz = ispring::CV::HogVisualization(hog, hog_img, hog_features, 5, 3, cv::Scalar(255, 255, 255));
 	cv::resize(hog_viz, img, img.size());
 	cv::imshow("hog visualization", img);
-	cv::waitKey();
+	cv::waitKey(1000);
+	cv::destroyWindow("hog visualization");
 }
 void UnitTest_CVEval() {
 	UNITTEST(CVEval);
@@ -209,9 +210,9 @@ void UnitTest_Console() {
 	ispring::xout.Create("window2");
 	ispring::xout.Create("window3");
 	
-	ispring::xout["window1"] << ispring::xout.light_red << "hello, world" << std::endl;
-	ispring::xout["window2"] << ispring::xout.light_aqua << "hello, world" << std::endl;
-	ispring::xout["window3"] << ispring::xout.light_yellow << "hello, world" << std::endl;
+	ispring::xout["window1"] << ispring::xout.light_red << "hello, world 1" << std::endl;
+	ispring::xout["window2"] << ispring::xout.light_aqua << "hello, world 2" << std::endl;
+	ispring::xout["window3"] << ispring::xout.light_yellow << "hello, world 3" << std::endl;
 	std::cout << ispring::xout.light_white;
 }
 void UnitTest_File() {
@@ -256,6 +257,26 @@ void UnitTest_File() {
     if (ispring::File::DirectoryExist(dir+"2") == true) {
         std::cerr << "Error" << std::endl;
     }
+	ispring::File::DirectoryErase("sequantial");
+	ispring::File::DirectoryMake("sequantial");
+	cv::Mat test = cv::Mat::zeros(500, 500, CV_8UC3);
+	cv::Point ppt(test.cols / 2, test.rows/2);
+	for (int i = 0; i < 10000; i+=100) {
+		cv::Point pt(i/360.0*10, 0);
+		cv::Point cpt;
+		float rad = (i % 360) * CV_PI / 180;
+		cpt.x = pt.x*cos(rad) - pt.y*sin(rad) + test.cols/2;
+		cpt.y = pt.x*sin(rad) + pt.y*cos(rad) + test.rows/2;
+		cv::line(test, ppt, cpt, cv::Scalar(0, 0, 255), 1, CV_AA);
+		ppt = cpt;
+		cv::imshow("test", test);
+		std::string name=ispring::File::GetNextSequantialName("sequantial", "*.jpg");
+		cv::imwrite(name, test);
+		cv::waitKey(10);
+	}
+	cv::destroyWindow("test");
+
+
 }
 void UnitTest_Basic() {
 	std::string plane = ";*.cpp;*.h;*.c;*.jpg;;;;;";

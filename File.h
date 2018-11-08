@@ -9,4 +9,5 @@
 #if !defined(ISPRING_7E1_9_15_FILE_HPP_INCLUDED)
 #define ISPRING_7E1_9_15_FILE_HPP_INCLUDED
 #include"modules/File/FileManager.h"
+#include"modules/File/FileSaver.h"
 #endif  //ISPRING_7E1_9_15_FILE_HPP_INCLUDED
