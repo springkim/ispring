@@ -376,10 +376,10 @@ namespace ispring {
 				base.x = image.cols / 2;
 				base.y = image.rows / 2;
 			}
-			cv::Mat dst = image.clone();
+			cv::Mat dst;
 			cv::Mat rot = cv::getRotationMatrix2D(base, degree, 1.0);
 			cv::warpAffine(image, dst, rot, image.size());
-			return std::move(dst);
+			return dst;
 		}
 		/**
 		*	@brief 이미지를 지정한 width와 height에 비율의 변화 없이 피팅 시킵니다.

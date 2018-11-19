@@ -99,7 +99,13 @@ namespace ispring {
 			CaptureBox(img, ShadowRect(rect), shadow, 0.3);
 			CaptureBox(img, rect, white, 0.3);
 		}
-
+		inline void DrawShadowText(cv::Mat& img, std::string text, cv::Point pt,int fontface, double fontscale, cv::Scalar foreground, cv::Scalar background, int thickness, int linetype,int shadowdist) {
+			cv::putText(img, text, cv::Point(pt.x - shadowdist, pt.y - shadowdist), fontface, fontscale, background, thickness, CV_AA);
+			cv::putText(img, text, cv::Point(pt.x - shadowdist, pt.y + shadowdist), fontface, fontscale, background, thickness, CV_AA);
+			cv::putText(img, text, cv::Point(pt.x + shadowdist, pt.y - shadowdist), fontface, fontscale, background, thickness, CV_AA);
+			cv::putText(img, text, cv::Point(pt.x + shadowdist, pt.y + shadowdist), fontface, fontscale, background, thickness, CV_AA);
+			cv::putText(img, text, pt, fontface, fontscale, foreground, thickness, CV_AA);
+		}
 	};
 }
 #endif
