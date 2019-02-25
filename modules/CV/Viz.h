@@ -62,18 +62,20 @@ namespace ispring {
 					for (int bin = 0; bin < hog.nbins; bin++) {
 						float currentGradStrength = gradientStrengths.at<float>(celly, cellx, bin);
 						if (currentGradStrength == 0) continue;
-						float currRad = bin * (CV_PI / hog.nbins) + (CV_PI / hog.nbins) / 2;
+						float currRad = static_cast<float>(bin * (CV_PI / hog.nbins) + (CV_PI / hog.nbins) / 2);
 						float dirVecX = cos(currRad);
 						float dirVecY = sin(currRad);
-						float maxVecLen = hog.cellSize.width / 2;
-						float scale = viz_factor;
+						float maxVecLen = hog.cellSize.width / 2.0F;
+						float scale = static_cast<float>(viz_factor);
 						float x1 = mx - dirVecX * currentGradStrength * maxVecLen * scale;
 						float y1 = my - dirVecY * currentGradStrength * maxVecLen * scale;
 						float x2 = mx + dirVecX * currentGradStrength * maxVecLen * scale;
 						float y2 = my + dirVecY * currentGradStrength * maxVecLen * scale;
-						float dist = hypot(x1 - x2, y1 - y2) / hypot(hog.cellSize.width, hog.cellSize.height);
-						cv::Vec3b color = heatmap.at<cv::Vec3b>(0, (1 - std::min(dist, 1.0F)) * 255);
-						cv::line(visual_image, cv::Point(x1*scaleFactor, y1*scaleFactor), cv::Point(x2*scaleFactor, y2*scaleFactor), cv::Scalar(color[2], color[1], color[0]), 1, CV_AA);
+						float dist = static_cast<float>(hypot(x1 - x2, y1 - y2) / hypot(hog.cellSize.width, hog.cellSize.height));
+						cv::Vec3b color = heatmap.at<cv::Vec3b>(0, static_cast<int>((1 - std::min(dist, 1.0F)) * 255));
+						cv::line(visual_image, cv::Point(static_cast<int>(x1*scaleFactor, y1*scaleFactor))
+								 , cv::Point(static_cast<int>(x2*scaleFactor, y2*scaleFactor))
+								 , cv::Scalar(color[2], color[1], color[0]), 1, CV_AA);
 					}
 				}
 			}

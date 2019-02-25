@@ -9,4 +9,5 @@
 #if !defined(ISPRING_7E1_9_15_VERIFY_HPP_INCLUDED)
 #define ISPRING_7E1_9_15_VERIFY_HPP_INCLUDED
 #include"modules/Verify/VerifyError.h"
+#include"modules/Verify/VerifyOutput.h"
 #endif  //ISPRING_7E1_9_15_VERIFY_HPP_INCLUDED
