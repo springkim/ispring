@@ -118,7 +118,7 @@ namespace ispring {
 			return ret;
 		}
 		inline bool InOrOut(cv::Point pt, cv::Point line1, cv::Point line2) {
-			return ((pt.x - line1.x)*(pt.y - line2.y) - (pt.x - line2.x)*(pt.y - line1.y)) < 0.0F;
+			return ((pt.x - line1.x)*(pt.y - line2.y) - (pt.x - line2.x)*(pt.y - line1.y)) <= 0.0F;
 		}
 		/**
 		*	@brief 점이 삼각형안에 있는지 판별합니다.
