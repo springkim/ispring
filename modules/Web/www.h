@@ -26,14 +26,13 @@ namespace ispring {
 	*	@author kimbomm
 	*	@date 2017-10-05
 	*/
-	class Web {
-	public:
+	namespace Web {
 		/**
 		*	@brief url의 html을 가져 옵니다.
 		*	@param url URL
 		*	@return html
 		*/
-		static std::string GetHtml(std::string url) {
+		inline std::string GetHtml(std::string url) {
 			std::string html;
 			HINTERNET hInternet = InternetOpenA("HTTP", INTERNET_OPEN_TYPE_PRECONFIG, NULL, NULL, 0);	//인터넷 관련 DLL을 초기화한다.
 			if (hInternet) {
@@ -68,9 +67,14 @@ namespace ispring {
 		*	@param file 저장할 파일 명
 		*	@return 다운로드에 성공하면 true
 		*/
-		static bool Download(std::string url,std::string file) {
+		inline bool Download(std::string url,std::string file) {
 			HRESULT r = URLDownloadToFileA(nullptr, url.c_str(), file.c_str(), 0, 0);
 			return r == S_OK;
+		}
+		inline bool isOnline() {
+			DWORD dwFlag;
+			TCHAR szName[MAX_PATH];
+			return ::InternetGetConnectedStateEx(&dwFlag, szName, MAX_PATH, 0);
 		}
 	};
 }

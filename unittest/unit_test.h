@@ -12,6 +12,7 @@
 #include"../../ispring/Compression.h"
 #include"../../ispring/CV.h"
 #include"../../ISpring/Verify.h"
+#include"../../ISpring/Web.h"
 void UnitTest_CVPlot() {
 	UNITTEST(CVPlot);
 	ispring::Plot plot;

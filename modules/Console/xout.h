@@ -42,7 +42,14 @@ auto get_endl(const std::basic_ostream<e, t>&)-> decltype(&std::endl<e, t>) {
 #include <Shlwapi.h>
 #pragma comment(lib, "Shlwapi.lib") //g++ [file] -lshlwapi
 
-#if _MSC_VER==1910		///VS 2017
+#if _MSC_VER==1920		///VS 2019
+//https://i.imgur.com/TOFHpX4.png
+#if _WIN64
+SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat amd64 ";
+#else
+SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat x86 ";
+#endif
+#elif 1910<=_MSC_VER && _MSC_VER<=1916	///vs 2017
 //https://i.imgur.com/TOFHpX4.png
 #if _WIN64
 SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvarsall.bat amd64 ";
