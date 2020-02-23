@@ -17,6 +17,7 @@
 #include<vector>
 #include<string>
 #include<algorithm>
+#include<map>
 #ifndef DOXYGEN
 #ifndef NOMINMAX
 #define NOMINMAX

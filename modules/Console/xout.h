@@ -2,7 +2,7 @@
 * @file		xout.h
 * @author		kimbomm (springnode@gmail.com)
 * @date		2017. 10. 3...
-* @version	1.0.0
+* @version	2.0.0
 *
 *  @brief
 *			다중 콘솔 출력 라이브러리
@@ -39,34 +39,12 @@ auto get_endl(const std::basic_ostream<e, t>&)-> decltype(&std::endl<e, t>) {
 #include<map>
 #include<ctime>
 #include<direct.h>
+#include<urlmon.h> //URLDownloadToFileA
+#pragma comment(lib,"urlmon.lib")
 #include <Shlwapi.h>
 #pragma comment(lib, "Shlwapi.lib") //g++ [file] -lshlwapi
 
-#if _MSC_VER==1920		///VS 2019
-//https://i.imgur.com/TOFHpX4.png
-#if _WIN64
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat amd64 ";
-#else
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/VC/Auxiliary/Build/vcvarsall.bat x86 ";
-#endif
-#elif 1910<=_MSC_VER && _MSC_VER<=1916	///vs 2017
-//https://i.imgur.com/TOFHpX4.png
-#if _WIN64
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvarsall.bat amd64 ";
-#else
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio/2017/Community/VC/Auxiliary/Build/vcvarsall.bat x86 ";
-#endif
-#elif _MSC_VER==1900	///VS 2015
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/vcvarsall.bat";
-#elif _MSC_VER==1800		///VS 2013
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio 12.0/VC/vcvarsall.bat";
-#elif _MSC_VER==1700		///VS2012
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio 11.0/VC/vcvarsall.bat";
-#elif _MSC_VER==1600		///VS2010
-SELECT_ANY const char* compiler = "C:/Program Files (x86)/Microsoft Visual Studio 10.0/VC/vcvarsall.bat";
-#elif defined(__GNUC__) ///MinGW
-SELECT_ANY const char* compiler = "g++";
-#endif
+
 #endif //DOXYGEN
 namespace ispring { 
 #ifndef DOXYGEN
@@ -233,6 +211,61 @@ namespace ispring {
 			local++;
 			return buf;
 		}
+		std::string ccwhere() {
+#ifdef _MSC_VER
+#if _MSC_VER==1920		///VS 2019
+			int version = 16;
+#elif 1910<=_MSC_VER && _MSC_VER<=1916	///vs 2017
+			int version = 15;
+#elif _MSC_VER==1900	///VS 2015
+			int version = 14;
+#elif _MSC_VER==1800		///VS 2013
+			int version = 13;
+#elif _MSC_VER==1700		///VS2012
+			int version = 12;
+#elif _MSC_VER==1600		///VS2010
+			int version = 10;
+#endif
+			std::string path;
+			char c_temp_path[MAX_PATH + 1];
+			GetTempPathA(MAX_PATH, c_temp_path);
+			std::string temp_path = c_temp_path;
+			std::string exe = temp_path + "vswhere.exe";
+			std::ifstream fin(exe, std::ifstream::ate | std::ifstream::binary);
+			int result = 1;
+			if (PathFileExistsA(exe.c_str()) == FALSE || static_cast<int>(fin.tellg()) != 455056)
+				result = (URLDownloadToFileA(nullptr, "https://github.com/springkim/ispring/releases/download/bin/vswhere.exe", exe.c_str(), 0, 0) == S_OK);
+			if (result != 0) {
+				char buf[256] = { 0 };
+				sprintf_s(buf,256, "%s -legacy -version [%d.0,%d.0) -property installationPath", exe.c_str(), version, version + 1);
+				FILE* fp = _popen(buf, "r");
+				if (fp != NULL) {
+					char c;
+					while (fread(&c, 1, 1, fp) == 1 && c != EOF) {
+						path.push_back(c);
+					}
+					_pclose(fp);
+				}
+
+				path = path.substr(0, path.find_last_not_of("\\\n\t ") + 1);
+				if (_MSC_VER <= 1900) {
+					path += "\\VC\\vcvarsall.bat\"";
+				}
+				else {
+					path += "\\VC\\Auxiliary\\Build\\vcvarsall.bat\"";
+#if _WIN64
+					path += " amd64";
+#else
+					path += " x86";
+#endif
+				}
+				path = "\"" + path;
+			}
+			return path;
+#elif defined(__GNUC__)
+			return "g++";
+#endif
+		}
 		std::string Compile(bool _override = false) {
 			std::string code = "\
 #include<iostream>\n\
@@ -313,9 +346,9 @@ int main(int argc,const char* argv[]) {\n\
 				fout.close();
 				//https://stackoverflow.com/questions/876239/how-can-i-redirect-and-append-both-stdout-and-stderr-to-a-file-with-bash
 #ifdef _MSC_VER
-				std::string compile_arg = "\"" + std::string(compiler) + "\" & cl /O2 " + cpp + " >>" + _log + " 2>&1 -o xout.exe";
+				std::string compile_arg = std::string(ccwhere()) + " & cl /O2 " + cpp + " >>" + _log + " 2>&1 -o xout.exe";
 #elif defined(__GNUC__)
-				std::string compile_arg = "\"" + std::string(compiler) + " -O2 " + cpp + " >>" + _log + " 2>&1 -o xout.exe";
+				std::string compile_arg = "\"" + std::string(ccwhere()) + " -O2 " + cpp + " >>" + _log + " 2>&1 -o xout.exe";
 #endif
 				int succ = system(compile_arg.c_str());
 				_chdir(curr_dir);

@@ -1,1 +1,1 @@
-g++ main.cpp -O2 -o MinGW-test.exe -lshlwapi -std=c++11 %opencv3%
+g++ main.cpp -O2 -o MinGW-test.exe -lshlwapi -std=c++11 -lurlmon -lwininet
