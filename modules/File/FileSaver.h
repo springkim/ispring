@@ -5,7 +5,7 @@
 * @version	1.0.0
 *
 *  @brief
-*			ÆÄÀÏ ¾²±â ¶óÀÌºê·¯¸®
+*			ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½
 *	@remark
 *			Created by kimbom on 2018. 11. 08...
 *			Copyright 2018 kimbom.All rights reserved.
@@ -36,7 +36,7 @@ namespace ispring {
 			char _adir[MAX_PATH + 1] = { 0 };
 			GetFullPathNameA(dir.c_str(), MAX_PATH, _adir, NULL);
 			std::string adir = _adir;
-			//[ÀÚ¸®¼ö(2)]i[¹øÈ£(variance)]
+			//[ï¿½Ú¸ï¿½ï¿½ï¿½(2)]i[ï¿½ï¿½È£(variance)]
 			std::pair<int, int> value;
 			auto it = cache.find(adir);
 			if (it == cache.end()) {
@@ -51,7 +51,7 @@ namespace ispring {
 				cache.insert(std::make_pair(adir, value));
 			} else {
 				it->second.second++;
-				if (std::to_string(it->second.second).length() > it->second.first) {
+				if (std::to_string(it->second.second).length() > static_cast<size_t>(it->second.first)) {
 					it->second.first++;
 				}
 				value = it->second;

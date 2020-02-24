@@ -45,7 +45,7 @@ namespace ispring {
 		*			여러개의 확장자는 ; 로 구분 합니다. ex) "*.jpg;*.png"
 		*			모든 확장자를 가져오고 싶으면 "*.*" 을 입력 합니다.
 		*/
-		inline std::vector<std::string> FileList(std::string dir_path, std::string ext, bool recursive = false) {
+		inline std::vector<std::string> FileList(std::string dir_path, std::string ext, bool recursive = false,bool folder=false) {
 			std::vector<std::string> paths; //return value
 			if (dir_path.back() != '/' && dir_path.back() != '\\') {
 				dir_path.push_back('/');
@@ -82,6 +82,8 @@ namespace ispring {
 					for (auto&temp : temps) {
 						paths.push_back(temp);
 					}
+				}else if(folder==true){
+				    paths.push_back(dir_path+path);
 				}
 			} while (::FindNextFileA(hFind, &fd));
 			::FindClose(hFind);
