@@ -213,7 +213,7 @@ namespace ispring {
 		}
 		std::string ccwhere() {
 #ifdef _MSC_VER
-#if _MSC_VER==1920		///VS 2019
+#if _MSC_VER>=1920		///VS 2019
 			int version = 16;
 #elif 1910<=_MSC_VER && _MSC_VER<=1916	///vs 2017
 			int version = 15;
@@ -413,15 +413,15 @@ int main(int argc,const char* argv[]) {\n\
 		_xout_color black = _xout_color('0');
 		_xout_color blue = _xout_color('1');
 		_xout_color green = _xout_color('2');
-		_xout_color aqua = _xout_color('7');
+		_xout_color aqua = _xout_color('3');
 		_xout_color red = _xout_color('4');
 		_xout_color purple = _xout_color('5');
 		_xout_color yellow = _xout_color('6');
-		_xout_color white = _xout_color('B');
+		_xout_color white = _xout_color('7');
 		_xout_color gray = _xout_color('8');
 		_xout_color light_blue = _xout_color('9');
 		_xout_color light_green = _xout_color('A');
-		_xout_color light_aqua = _xout_color('3');
+		_xout_color light_aqua = _xout_color('B');
 		_xout_color light_red = _xout_color('C');
 		_xout_color light_purple = _xout_color('D');
 		_xout_color light_yellow = _xout_color('E');

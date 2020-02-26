@@ -69,7 +69,8 @@ namespace ispring {
 			}
 #elif defined(ISPRING_LINUX)
 			std::ostringstream cmd;
-			cmd << "wget -O - " << url << " 2>/dev/null";
+			cmd << "wget -O - \"" << url << "\" 2>/dev/null";
+			std::string cmdstr=cmd.str();
             FILE* fp=popen(cmd.str().c_str(),"r");
             char c;
             while(fread(&c,1,1,fp)==1 && c!=EOF) {
@@ -91,7 +92,7 @@ namespace ispring {
 			return r == S_OK;
 #elif defined(ISPRING_LINUX)
             std::ostringstream cmd;
-            cmd << "wget -O " << file << " " << url << " 2>/dev/null";
+            cmd << "wget -O \"" << file << "\" \"" << url << "\" 2>/dev/null";
             FILE* fp=popen(cmd.str().c_str(),"r");
             if(fp==NULL)return false;
             else{

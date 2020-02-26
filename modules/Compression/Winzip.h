@@ -1775,16 +1775,16 @@ namespace ispring_3rdparty {
 		uInt f;                       // i repeats in table every f entries 
 		int g;                        // maximum code length 
 		int h;                        // table level 
-		register uInt i;              // counter, current code 
-		register uInt j;              // counter
-		register int k;               // number of bits in current code 
+		uInt i;              // counter, current code
+		uInt j;              // counter
+		int k;               // number of bits in current code
 		int l;                        // bits per table (returned in m) 
 		uInt mask;                    // (1 << w) - 1, to avoid cc -O bug on HP 
-		register uInt *p;            // pointer into c[], b[], or v[]
+		uInt *p;            // pointer into c[], b[], or v[]
 		inflate_huft *q;              // points to current table 
 		struct inflate_huft_s r;      // table entry for structure assignment 
 		inflate_huft *u[BMAX];        // table stack 
-		register int w;               // bits before this table == (l * h) 
+		int w;               // bits before this table == (l * h)
 		uInt x[BMAX + 1];               // bit offsets, then code stack 
 		uInt *xp;                    // pointer into x 
 		int y;                        // number of dummy codes added 
@@ -5705,7 +5705,7 @@ namespace ispring_3rdparty {
 	* IN assertion: 1 <= len <= 15
 	*/
 	inline unsigned bi_reverse(unsigned code, int len) {
-		register unsigned res = 0;
+		unsigned res = 0;
 		do {
 			res |= code & 1;
 			code >>= 1, res <<= 1;
@@ -5803,7 +5803,7 @@ namespace ispring_3rdparty {
 	*    of window[] when looking for matches towards the end).
 	*/
 	inline void lm_init(TState &state, int pack_level, ush *flags) {
-		register unsigned j;
+		unsigned j;
 
 		Assert(state, pack_level >= 1 && pack_level <= 8, "bad pack level");
 
@@ -5873,9 +5873,9 @@ namespace ispring_3rdparty {
 	// if desired. Which I do so desire!
 	inline int longest_match(TState &state, IPos cur_match) {
 		unsigned chain_length = state.ds.max_chain_length;   /* max hash chain length */
-		register uch *scan = state.ds.window + state.ds.strstart; /* current string */
-		register uch *match;                    /* matched string */
-		register int len;                           /* length of current match */
+		uch *scan = state.ds.window + state.ds.strstart; /* current string */
+		uch *match;                    /* matched string */
+		int len;                           /* length of current match */
 		int best_len = state.ds.prev_length;                 /* best match length so far */
 		IPos limit = state.ds.strstart > (IPos)_ZIP_MAX_DIST ? state.ds.strstart - (IPos)_ZIP_MAX_DIST : Z_NIL;
 		/* Stop when cur_match becomes <= limit. To simplify the code,
@@ -5888,9 +5888,9 @@ namespace ispring_3rdparty {
 
 
 
-		register uch *strend = state.ds.window + state.ds.strstart + MAX_MATCH;
-		register uch scan_end1 = scan[best_len - 1];
-		register uch scan_end = scan[best_len];
+		uch *strend = state.ds.window + state.ds.strstart + MAX_MATCH;
+		uch scan_end1 = scan[best_len - 1];
+		uch scan_end = scan[best_len];
 
 		/* Do not waste too much time if we already have a good match: */
 		if (state.ds.prev_length >= state.ds.good_match) {
@@ -5977,7 +5977,7 @@ namespace ispring_3rdparty {
 	*    performed for at least two bytes (required for the translate_eol option).
 	*/
 	inline void fill_window(TState &state) {
-		register unsigned n, m;
+		unsigned n, m;
 		unsigned more;    /* Amount of free space at the end of the window. */
 
 		do {
@@ -6144,7 +6144,7 @@ namespace ispring_3rdparty {
 		IPos prev_match;            /* previous match */
 		int flush;                  /* set if current block must be flushed */
 		int match_available = 0;    /* set if previous match exists */
-		register unsigned match_length = MIN_MATCH - 1; /* length of best match */
+		unsigned match_length = MIN_MATCH - 1; /* length of best match */
 
 		if (state.level <= 3) return deflate_fast(state); /* optimized for speed */
 

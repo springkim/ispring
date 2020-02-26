@@ -56,6 +56,7 @@ inline void __VerifyFilePath(std::string path, const char* __file__, const char*
 }
 
 #elif defined(ISPRING_LINUX)
+#include<unistd.h>
 inline void __VerifyError(std::string msg, const char* __file__, const char* __function__, int __line__) {
 	std::ostringstream oss;
 	oss << "Verify Error : (" << msg << ") in " << __function__ << " , " << __file__ << " , line" << __line__ << std::endl;

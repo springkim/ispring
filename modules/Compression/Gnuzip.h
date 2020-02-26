@@ -17,7 +17,7 @@
 #include<fcntl.h>
 #include"../File/FileManager.h"
 namespace ispring_3rdparty{
-	std::string MakeTempZipFile(){
+	SELECT_ANY std::string MakeTempZipFile(){
 		char buf[32];
 		struct timeval val;
 		struct tm* ptm;
@@ -26,7 +26,7 @@ namespace ispring_3rdparty{
 		sprintf(buf, "/tmp/fd_%02d%02d%05ld", ptm->tm_min, ptm->tm_sec, val.tv_usec);
 		return buf;
 	}
-	void ZipWithProgress(std::vector<std::string> args,std::atomic<int>* progress,int max_progress){
+    SELECT_ANY void ZipWithProgress(std::vector<std::string> args,std::atomic<int>* progress,int max_progress){
 		std::string fd_stdout=MakeTempZipFile();
 		pid_t pid=fork();
 		if(progress!=nullptr) {
@@ -69,7 +69,7 @@ namespace ispring_3rdparty{
 			}
 		}
 	}
-	void UnzipWithProgress(std::vector<std::string> args,std::atomic<int>* progress,int max_progress){
+    SELECT_ANY void UnzipWithProgress(std::vector<std::string> args,std::atomic<int>* progress,int max_progress){
 		std::string fd_stdout=MakeTempZipFile();
 		pid_t pid=fork();
 		if(progress!=nullptr) {
