@@ -8,7 +8,9 @@
 */
 #if !defined(ISPRING_7E1_9_15_COMPRESSION_HPP_INCLUDED)
 #define ISPRING_7E1_9_15_COMPRESSION_HPP_INCLUDED
+#ifndef USE_7Z
 #include"modules/Compression/Zip.h"
-
-
+#else
+#include"modules/Compression/7zext.h"
+#endif
 #endif  //ISPRING_7E1_9_15_COMPRESSION_HPP_INCLUDED
