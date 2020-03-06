@@ -108,7 +108,8 @@ namespace ispring {
 		*/
 		inline void Uncompress(std::string file, std::string _password = "", std::atomic<int>* progress = nullptr) {
 			std::string _7z = check7z();
-			std::string cmd = "\"" + _7z + "\"" + " x " + file + " -o" + ispring::String::GetNameOfFile(file) + " ";
+			std::string dir=file.substr(0,file.find_last_of("."));
+			std::string cmd = "\"" + _7z + "\"" + " x " + file + " -o" + dir + " ";
 			if (_password == "")
 				cmd += ">NUL 2>&1";
 			else
