@@ -170,6 +170,29 @@ namespace ispring {
 			s.pFrom = sf;
 			s.fFlags = FOF_SILENT | FOF_NOCONFIRMMKDIR | FOF_NOCONFIRMATION | FOF_NOERRORUI;
 			int res = SHFileOperationA(&s);
+			if (res == 0xB7) {	//MAX_PATH problem
+				auto files = FileList(src,"*.*",true);
+				decltype(files) rfiles(files);
+				for(int i=0;i<files.size();i++){
+					
+					std::string rfile = files[i].substr(src.length(), files[i].length() - src.length() + 1);
+					if (dst.back() == '/' || dst.back() == '\\') {
+						if (rfile.front() == '/' || rfile.front() == '\\') {
+							dst.pop_back();
+						}
+					}
+					else {
+						if (rfile.front() != '/' && rfile.front() != '\\') {
+							dst.push_back('\\');
+						}
+					}
+					std::string csrc(dst + rfile);
+					std::wstring wdst(csrc.begin(),csrc.end());
+					std::wstring wsrc(files[i].begin(), files[i].end());
+					CopyFileW(wsrc.data(), wdst.data(), FALSE);
+				}
+
+			}
 			return res == 0;
 		}
 		/**
